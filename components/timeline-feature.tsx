@@ -5,169 +5,148 @@ import { Timeline } from "@/components/ui/timeline";
 export function TimelineDemo() {
   const data = [
     {
-      title: "2026",
-      content: (
-        <div>
-          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-semibold mb-2">
-            Analyst — KPMG India (Full-time)
-          </p>
-          <p className="text-neutral-600 dark:text-neutral-400 text-xs md:text-sm mb-6">
-            Jan 2026 – Present · Gurugram, Haryana · On-site
-          </p>
-
-          <div className="mb-8 space-y-2">
-            <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm">
-              • Developing enterprise-grade full-stack solutions to support
-              large-scale business operations.
-            </p>
-            <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm">
-              • Translating complex business requirements into scalable
-              technical architectures.
-            </p>
-            <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm">
-              • Enhancing system performance and reliability through optimized
-              backend services and efficient frontend rendering.
-            </p>
-            <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm">
-              • Driving quality through structured testing, clean code
-              practices, and production-ready deployments.
-            </p>
-            <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm">
-              • Collaborating with stakeholders to deliver measurable business
-              value through technology.
-            </p>
-          </div>
-        </div>
-      ),
-    },
-
-    {
-      title: "2025",
-      content: (
-        <div>
-          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-semibold mb-2">
-            Full Stack Developer — OneAim IT Solutions
-          </p>
-          <p className="text-neutral-600 dark:text-neutral-400 text-xs md:text-sm mb-6">
-            Aug 2025 – 2026 · New Delhi, India
-          </p>
-
-          <div className="mb-6 space-y-2">
-            <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm">
-              • Worked across 4 real-world projects delivering production-ready
-              backend systems.
-            </p>
-            <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm">
-              • Built a Vendor Management System with authentication, admin
-              controls, and workflow automation.
-            </p>
-            <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm">
-              • Developed backend for an AI Medical platform that processes
-              doctor–patient conversations and generates summaries.
-            </p>
-            <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm">
-              • Implemented microservices architecture using Kafka, Docker, and
-              PostgreSQL.
-            </p>
-          </div>
-
-          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-semibold mb-2">
-            Project — CodePlus
-          </p>
-
-          <div className="space-y-2">
-            <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm">
-              • Built a SaaS platform for solving DSA problems with real-time
-              code execution.
-            </p>
-            <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm">
-              • Integrated Judge0 API improving code submission accuracy by
-              35%.
-            </p>
-            <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm">
-              • Added solution sharing and discussion features for collaborative
-              learning.
-            </p>
-          </div>
-        </div>
-      ),
-    },
-
-    {
       title: "2024",
       content: (
         <div>
-          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-semibold mb-4">
-            Project — Tweetify (MERN Stack)
+          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8 ">
+            Built and launched Aceternity UI and Aceternity UI Pro from scratch
           </p>
-
-          <div className="mb-6 space-y-2">
-            <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm">
-              • Built a full-stack social media platform with tweeting, liking,
-              and user interactions.
-            </p>
-            <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm">
-              • Designed REST APIs using Node.js and Express.js.
-            </p>
-            <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm">
-              • Developed responsive UI with React.js and TailwindCSS.
-            </p>
-          </div>
-
-          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-semibold mb-2">
-            Education
-          </p>
-          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm mb-4">
-            B.Tech in Information Technology — Jabalpur Engineering College
-            (CGPA: 7.35)
-          </p>
-
-          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-semibold mb-2">
-            Achievements
-          </p>
-          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm mb-4">
-            • Solved 300+ DSA problems across LeetCode, GFG, and CodingNinjas.
-          </p>
-
-          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-semibold mb-2">
-            Certifications
-          </p>
-          <div className="space-y-1">
-            <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm">
-              • Full Stack Developer — 100xDev
-            </p>
-            <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm">
-              • Java Programming Fundamentals Certification
-            </p>
-            <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm">
-              • SQL Specialization — YBI Foundation
-            </p>
-            <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm">
-              • Advanced React.js — NamasteDev
-            </p>
+          <div className="grid grid-cols-2 gap-4">
+            <Image
+              src=""
+              alt="startup template"
+              width={500}
+              height={500}
+              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+            />
+            <Image
+              src=""
+              alt="startup template"
+              width={500}
+              height={500}
+              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+            />
+            <Image
+              src=""
+              alt="startup template"
+              width={500}
+              height={500}
+              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+            />
+            <Image
+              src=""
+              alt="startup template"
+              width={500}
+              height={500}
+              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+            />
           </div>
         </div>
       ),
     },
-
     {
-      title: "2020",
+      title: "Early 2023",
       content: (
         <div>
-          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-semibold mb-4">
-            Started B.Tech in Information Technology
+          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
+            I usually run out of copy, but when I see content this big, I try to
+            integrate lorem ipsum.
           </p>
-
-          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm">
-            Began my engineering journey at Jabalpur Engineering College,
-            focusing on computer science fundamentals including Data
-            Structures, Algorithms, Operating Systems, and Database Management.
+          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
+            Lorem ipsum is for people who are too lazy to write copy. But we are
+            not. Here are some more example of beautiful designs I built.
           </p>
+          <div className="grid grid-cols-2 gap-4">
+            <Image
+              src=""
+              alt="hero template"
+              width={500}
+              height={500}
+              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+            />
+            <Image
+              src=""
+              alt="feature template"
+              width={500}
+              height={500}
+              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+            />
+            <Image
+              src=""
+              alt="bento template"
+              width={500}
+              height={500}
+              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+            />
+            <Image
+              src=""
+              alt="cards template"
+              width={500}
+              height={500}
+              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+            />
+          </div>
+        </div>
+      ),
+    },
+    {
+      title: "Changelog",
+      content: (
+        <div>
+          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-4">
+            Deployed 5 new components on Aceternity today
+          </p>
+          <div className="mb-8">
+            <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm">
+              ✅ Card grid component
+            </div>
+            <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm">
+              ✅ Startup template Aceternity
+            </div>
+            <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm">
+              ✅ Random file upload lol
+            </div>
+            <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm">
+              ✅ Himesh Reshammiya Music CD
+            </div>
+            <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm">
+              ✅ Salman Bhai Fan Club registrations open
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            <Image
+              src=""
+              alt="hero template"
+              width={500}
+              height={500}
+              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+            />
+            <Image
+              src=""
+              alt="feature template"
+              width={500}
+              height={500}
+              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+            />
+            <Image
+              src=""
+              alt="bento template"
+              width={500}
+              height={500}
+              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+            />
+            <Image
+              src=""
+              alt="cards template"
+              width={500}
+              height={500}
+              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+            />
+          </div>
         </div>
       ),
     },
   ];
-
   return (
     <div className="min-h-screen w-full">
       <div className="absolute top-0 left-0 w-full">

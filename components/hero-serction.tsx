@@ -2,153 +2,125 @@
 
 import { Github, Linkedin, Twitter } from "lucide-react";
 import Link from "next/link";
-import { Highlighter } from "./ui/highlighter";
 import { motion } from "framer-motion";
+import { FlickeringGrid } from "./ui/flickering-grid";
+import { Bebas_Neue } from "next/font/google";
 
+const bebas = Bebas_Neue({
+  weight: "400",
+  subsets: ["latin"],
+});
 export const HeroSection = () => {
   return (
-    <section className="relative flex items-center justify-between px-10 py-20 text-white overflow-hidden">
-
-      {/* Animated Background Glow */}
+    <section className="relative flex items-center justify-between px-10 py-12 text-white overflow-hidden ">
+      
+      {/* Background */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute w-[600px] h-[600px] bg-purple-600/30 blur-[150px] rounded-full top-[-200px] left-[-200px] animate-pulse" />
+        <FlickeringGrid
+          className="bg-black relative inset-0 size-full"
+          squareSize={4}
+          gridGap={6}
+          color="#6B7280"
+          maxOpacity={0.7}
+          flickerChance={0.1}
+          height={2000}
+          width={2000}
+        />
+      </div>
+
+      {/* Fade Gradient Overlay */}
+      <div className="absolute inset-0 -z-5 bg-gradient-to-b from-black via-transparent to-black opacity-80"></div>
+
+      {/* Glow */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute w-[800px] h-[800px] bg-purple-600/30 blur-[150px] rounded-full top-[-200px] left-[-200px] animate-pulse" />
         <div className="absolute w-[500px] h-[500px] bg-orange-500/20 blur-[150px] rounded-full bottom-[-200px] right-[-200px] animate-pulse" />
       </div>
+      
 
-      {/* Vertical Email */}
-      <motion.div
-        initial={{ opacity: 0, x: -40 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8 }}
-      >
+      {/* Center Content */}
+      <div className="relative w-full flex flex-row  items-center">
+        {/* SCROLLING HEADING */}
+        <div className="absolute w-full  z-0">
+          <motion.div
+            initial={{ x: "0%" }}
+            animate={{ x: ["0%", "-600%"] }}
+            transition={{
+              duration: 15,
+              ease: "linear",
+              repeat: Infinity,
+              repeatType: "loop",
+            }}
+            className="flex whitespace-nowrap"
+          >
+            <h1
+              className={`${bebas.className} text-[120px] md:text-[400px] font-extrabold text-white/60 `}
+            >
+              FULL STACK DEVELOPER • FULL STACK DEVELOPER • FULL STACK DEVELOPER
+              • FULL STACK DEVELOPER • FULL STACK DEVELOPER • FULL STACK
+              DEVELOPER
+            </h1>
+            <h1
+              className={`${bebas.className} text-[120px] md:text-[400px] font-extrabold text-white/60 tracking-widest`}
+            >
+              FULL STACK DEVELOPER • FULL STACK DEVELOPER • FULL STACK DEVELOPER
+              • FULL STACK DEVELOPER • FULL STACK DEVELOPER • FULL STACK
+              DEVELOPER
+            </h1>
+          </motion.div>
+        </div>
+
+        {/* Email */}
         <Link
           href="mailto:yashgtech00@gmail.com"
-          className="text-lg font-semibold tracking-widest [writing-mode:vertical-rl] rotate-180 opacity-70 hover:opacity-100 transition"
+          className=" bg-white/40 rounded-3xl p-2 mt-[600px]"
         >
-          yashgtech00@gmail.com
+          <p className="text-lg text-white font-semibold tracking-widest    opacity-70 hover:opacity-100  transition hover:text-orange-400 ">
+            yashgtech00@gmail.com
+          </p>
         </Link>
-      </motion.div>
 
-      {/* Main Content */}
-      <div className="w-1/2">
-
-        {/* Intro */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="text-gray-400 text-lg mb-6"
-        >
-          Hi! <span className="text-orange-400 font-semibold">Yash</span> here,
-        </motion.p>
-
-        {/* Heading */}
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          className="text-4xl md:text-5xl font-extrabold leading-tight max-w-3xl"
-        >
-          FULL-STACK DEVELOPER BUILDING IN{" "}
-          <Highlighter action="underline" color="#FF9800">
-            WEB2
-          </Highlighter>{" "}
-          &{" "}
-          <Highlighter action="underline" color="#FF9800">
-            WEB3
-          </Highlighter>
-        </motion.h1>
-
-        {/* Tech Stack */}
+        {/* IMAGE */}
         <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={{
-            hidden: {},
-            visible: {
-              transition: {
-                staggerChildren: 0.15,
-                delayChildren: 0.6,
-              },
-            },
-          }}
-          className="flex flex-wrap gap-4 mt-10"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.4, duration: 0.8 }}
+          className="relative z-40 ml-40 mr-48"
         >
-          {["Next.js", "MongoDB", "Tailwind CSS", "Solidity"].map((tech) => (
-            <motion.span
-              key={tech}
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0 },
-              }}
-              whileHover={{ scale: 1.1 }}
-              className="px-5 py-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-xl hover:bg-orange-500/20 transition cursor-pointer"
-            >
-              {tech}
-            </motion.span>
+          <div className="relative">
+            <img
+              src="/yash.png"
+              alt="Yash"
+              className="w-[550px] md:w-[600px] rounded-2xl"
+            />
+            {/* Image Fade Overlay */}
+            <div className="absolute inset-0 rounded-2xl bg-linear-to-t from-black/40 via-transparent to-black/20 pointer-events-none"></div>
+          </div>
+        </motion.div>
+        {/* Social Icons */}
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          className="flex mt-[600px] gap-6"
+        >
+          {[
+            { icon: Linkedin, link: "https://www.linkedin.com" },
+            { icon: Github, link: "https://github.com" },
+            { icon: Twitter, link: "https://twitter.com" },
+          ].map(({ icon: Icon, link }, i) => (
+            <motion.div key={i} whileHover={{ scale: 1.2, rotate: 5 }}>
+              <Link href={link} target="_blank">
+                <Icon className="w-6 h-6 text-white hover:text-orange-400 transition" />
+              </Link>
+            </motion.div>
           ))}
         </motion.div>
-
-        {/* Description */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.9 }}
-          className="mt-10 text-gray-300 text-lg leading-relaxed max-w-xl"
-        >
-          Full Stack Developer and Analyst at KPMG Advisory Services,
-          specializing in scalable AI-powered digital solutions. I architect
-          end-to-end MERN applications with a strong focus on performance,
-          security, and cloud-native deployments.
-        </motion.p>
-
-        {/* Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.1 }}
-          className="flex gap-6 mt-12"
-        >
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-8 py-3 rounded-xl bg-orange-600 hover:bg-orange-700 transition font-semibold shadow-lg shadow-orange-600/40"
-          >
-            PROOF OF WORK
-          </motion.button>
-
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-8 py-3 rounded-xl border border-orange-500 hover:bg-orange-500/10 transition font-semibold"
-          >
-            CHECK RESUME
-          </motion.button>
-        </motion.div>
       </div>
-
-      {/* Social Icons */}
-      <motion.div
-        initial={{ opacity: 0, x: 40 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8 }}
-        className="flex flex-col gap-6"
-      >
-        {[ 
-          { icon: Linkedin, link: "https://www.linkedin.com" },
-          { icon: Github, link: "https://github.com" },
-          { icon: Twitter, link: "https://twitter.com" },
-        ].map(({ icon: Icon, link }, i) => (
-          <motion.div
-            key={i}
-            whileHover={{ scale: 1.2, rotate: 5 }}
-          >
-            <Link href={link} target="_blank">
-              <Icon className="w-6 h-6 text-white hover:text-orange-400 transition" />
-            </Link>
-          </motion.div>
-        ))}
-      </motion.div>
+      <div
+        className="pointer-events-none absolute bottom-0 left-0 w-full h-40 
+bg-gradient-to-b from-transparent to-black z-50"
+      />
     </section>
   );
 };
