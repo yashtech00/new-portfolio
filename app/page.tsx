@@ -1,26 +1,22 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import ShaderBackground from "@/components/ui/shader-background";
 import { Navbar } from "@/components/Navbar";
 import { HeroSection } from "@/components/hero-serction";
 import { GooeyText } from "@/components/ui/gooey-text-morphing";
-import GithubGraph from "@/components/about-section";
-import { TimelineDemo } from "@/components/timeline-feature";
-import { FlickeringGrid } from "@/components/ui/flickering-grid";
-
+import { Projects } from "@/components/projects";
+import Footer from "@/components/footer";
+import { ConnectWithMe } from "@/components/connect-with-me";
+import ScrollTimeline from "@/components/timeline-feature";
+import AboutSection from "@/components/about-section";
 export default function Home() {
   const [showIntro, setShowIntro] = useState(true);
-
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowIntro(false);
     }, 3500);
-
     return () => clearTimeout(timer);
   }, []);
-
   return (
     <div className="w-full overflow-x-hidden bg-black">
       <AnimatePresence mode="wait">
@@ -48,12 +44,20 @@ export default function Home() {
               <HeroSection />
             </section>
             <section className="relative bg-black">
-              <GithubGraph />
+              <AboutSection />
             </section>
-
             {/* TIMELINE SECTION */}
             <section className="relative bg-black">
-              <TimelineDemo />
+              <ScrollTimeline />
+            </section>
+            <section>
+              <Projects />
+            </section>
+            <section>
+              <ConnectWithMe />
+            </section>
+            <section>
+              <Footer />
             </section>
           </>
         )}

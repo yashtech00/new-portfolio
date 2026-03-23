@@ -2,7 +2,7 @@
 
 export const Navbar = () => {
   return (
-    <div className="flex justify-between items-center px-10 py-6 text-white ">
+    <div className="flex justify-between items-center px-10 py-6 bg-black text-white ">
       
       {/* Logo */}
       <div className="text-3xl font-bold flex gap-2">
