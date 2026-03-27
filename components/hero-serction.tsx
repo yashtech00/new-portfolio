@@ -2,7 +2,7 @@
 
 import { Github, Linkedin, Twitter } from "lucide-react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { FlickeringGrid } from "./ui/flickering-grid";
 import { Bebas_Neue } from "next/font/google";
 
@@ -11,8 +11,11 @@ const bebas = Bebas_Neue({
   subsets: ["latin"],
 });
 export const HeroSection = () => {
+  const { scrollY } = useScroll();
+const scale = useTransform(scrollY, [0, 500], [1, 0.9]); // Shrinks as you scroll 500px
   return (
-    <section className="relative flex items-center justify-between px-10 py-12 text-white overflow-hidden ">
+    <motion.section style={{ scale}}
+     className="relative flex items-center justify-between px-10 py-12 text-white overflow-hidden ">
       
       {/* Background */}
       <div className="absolute inset-0 -z-10">
@@ -121,6 +124,6 @@ export const HeroSection = () => {
         className="pointer-events-none absolute bottom-0 left-0 w-full h-40 
 bg-gradient-to-b from-transparent to-black z-50"
       />
-    </section>
+    </motion.section>
   );
 };

@@ -44,7 +44,7 @@ const timelineData = [
   },
 ];
 
-export default function PremiumTimeline() {
+export default function ScrollTimeline() {
   const ref = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -63,7 +63,7 @@ export default function PremiumTimeline() {
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-900/10 to-transparent blur-3xl pointer-events-none" />
 
       {/* HEADER */}
-      <div className="text-center mb-24 relative z-10">
+      <div className=" mb-24 relative z-10">
         <h2 className="text-5xl font-bold mb-4 tracking-tight">My Journey</h2>
         <p className="text-neutral-400 max-w-xl mx-auto">
           From learning fundamentals to delivering enterprise solutions — a
