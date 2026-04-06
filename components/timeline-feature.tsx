@@ -21,7 +21,7 @@ const timelineData = [
   {
     date: "2025",
     title: "Full Stack Developer",
-    company: "Independent Consultant / Project Lead",
+    company: "One Aim IT Solutions / Project Lead",
     description: [
       "Engineered AI-integrated platforms, leveraging automated workflows to enhance operational efficiency and user engagement.",
       "Implemented modular microservices architectures to ensure system flexibility and maintainability.",
@@ -32,15 +32,15 @@ const timelineData = [
   },
   {
     date: "2024",
-    title: "Software Developer Intern",
-    company: "LeopardRuns Innovation & Technology",
+    title: "Bachelor of Technology In Information Technology",
+    company: "Jabalpur Engineering College",
     description: [
       "Collaborated on the development of full-stack integrations, bridging React frontends with robust Node.js API services.",
       "Modernized legacy CRUD systems and executed performance tuning to improve application responsiveness.",
       "Contributed to agile development cycles, delivering functional prototypes for high-impact client requirements.",
     ],
-    location: "Bhopal, India",
-    image: "/leopard.jpeg",
+    location: "Jabalpur, Madhya Pradesh, India",
+    image: "/jec.jpeg",
   },
 ];
 
@@ -63,7 +63,7 @@ export default function ScrollTimeline() {
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-900/10 to-transparent blur-3xl pointer-events-none" />
 
       {/* HEADER */}
-      <div className=" mb-24 relative z-10">
+      <div className="mb-24 relative z-10">
         <h2 className="text-5xl font-bold mb-4 tracking-tight">My Journey</h2>
         <p className="text-neutral-400 max-w-xl mx-auto">
           From learning fundamentals to delivering enterprise solutions — a
@@ -88,21 +88,27 @@ export default function ScrollTimeline() {
           return (
             <div
               key={index}
-              className="relative grid grid-cols-[1fr_auto_1fr] items-center gap-x-8 mb-24"
+              className="relative grid grid-cols-[1fr_auto_1fr] items-center gap-x-8 mb-28"
             >
               {/* LEFT SIDE */}
               <div className="flex justify-end">
                 {isLeft ? (
                   <TimelineCard item={item} direction="left" />
                 ) : (
-                  <span className="text-2xl text-neutral-400 text-right pr-4">
-                    {item.date}
-                  </span>
+                  <TimelineImage item={item} direction="left" />
                 )}
               </div>
 
-              {/* CENTER DOT */}
-              <div className="flex items-center justify-center z-10">
+              {/* CENTER DOT + DATE */}
+              <div className="flex flex-col items-center justify-center z-10 gap-2">
+                <motion.span
+                  initial={{ opacity: 0, y: -8 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="text-sm font-bold text-white bg-neutral-900 border border-neutral-700 px-3 py-1 rounded-full shadow-lg whitespace-nowrap"
+                >
+                  {item.date}
+                </motion.span>
                 <motion.div
                   whileInView={{ scale: [0, 1.4, 1] }}
                   transition={{ duration: 0.6 }}
@@ -115,9 +121,7 @@ export default function ScrollTimeline() {
                 {!isLeft ? (
                   <TimelineCard item={item} direction="right" />
                 ) : (
-                  <span className="text-2xl text-neutral-400 pl-4">
-                    {item.date}
-                  </span>
+                  <TimelineImage item={item} direction="right" />
                 )}
               </div>
             </div>
@@ -125,6 +129,39 @@ export default function ScrollTimeline() {
         })}
       </div>
     </section>
+  );
+}
+
+/* ================= IMAGE PANEL ================= */
+
+function TimelineImage({
+  item,
+  direction,
+}: {
+  item: any;
+  direction: "left" | "right";
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: direction === "left" ? -60 : 60 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
+      viewport={{ once: true }}
+      className={`w-full max-w-xs ${direction === "left" ? "ml-auto" : "mr-auto"}`}
+    >
+      {item.image && (
+        <div className="group overflow-hidden rounded-2xl border border-neutral-800 shadow-2xl">
+          <img
+            src={item.image}
+            alt={item.company}
+            className="w-full h-52 object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+          <div className="px-3 py-2 bg-neutral-900/80 border-t border-neutral-800">
+            <p className="text-xs text-neutral-400 truncate">{item.company}</p>
+          </div>
+        </div>
+      )}
+    </motion.div>
   );
 }
 
@@ -143,13 +180,13 @@ function TimelineCard({
       whileInView={{ opacity: 1, x: 0, y: 0 }}
       transition={{ duration: 0.7, ease: "easeOut" }}
       viewport={{ once: true }}
-      className="w-full max-w-3xl"
+      className="w-full max-w-md"
     >
       <GlowCard customSize className="w-full rounded-2xl p-0">
         <motion.div
           whileHover={{ y: -6, scale: 1.02 }}
           transition={{ type: "spring", stiffness: 200 }}
-          className="relative group   rounded-2xl p-2 shadow-2xl overflow-hidden"
+          className="relative group rounded-2xl p-4 shadow-2xl overflow-hidden"
         >
           {/* EXTRA GLOW LAYER */}
           <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-r from-purple-500/20 via-transparent to-blue-500/20 blur-2xl pointer-events-none" />
@@ -166,7 +203,7 @@ function TimelineCard({
           <p className="text-neutral-500 text-xs mb-4">📍 {item.location}</p>
 
           {/* DESCRIPTION */}
-          <ul className="text-sm text-neutral-300 space-y-1.5 mb-4">
+          <ul className="text-sm text-neutral-300 space-y-1.5">
             {item.description.map((d: string, i: number) => (
               <motion.li
                 key={i}
@@ -178,16 +215,6 @@ function TimelineCard({
               </motion.li>
             ))}
           </ul>
-
-          {/* IMAGE */}
-          {item.image && (
-            <div className="overflow-hidden rounded-lg">
-              <img
-                src={item.image}
-                className="w-full h-80 object-cover rounded-lg transition-transform duration-500 group-hover:scale-110"
-              />
-            </div>
-          )}
         </motion.div>
       </GlowCard>
     </motion.div>

@@ -29,7 +29,7 @@ function Footer() {
   const socialLinks = [
     { icon: <Github size={20} />, href: "https://github.com/yashtech00" },
     { icon: <Linkedin size={20} />, href: "https://linkedin.com/in/yash00tech" },
-    { icon: <Twitter size={20} />, href: "#" },
+    { icon: <Twitter size={20} />, href: "https://x.com/yashgtech00" },
   ];
 
   return (
@@ -77,17 +77,17 @@ function Footer() {
             <div className="flex flex-col gap-3 text-neutral-400 text-sm">
               <div className="flex items-center gap-2">
                 <Mail size={16} />
-                <span>yashgupta.dev@gmail.com</span>
+                <span>yashgtech00@gmail.com</span>
               </div>
 
               <div className="flex items-center gap-2">
                 <Phone size={16} />
-                <span>+91 XXXXX XXXXX</span>
+                <span>+91 7879758136</span>
               </div>
 
               <div className="flex items-center gap-2">
                 <MapPin size={16} />
-                <span>India</span>
+                <span>Gurgaon, Haryana, India</span>
               </div>
             </div>
           </div>
