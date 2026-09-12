@@ -55,23 +55,9 @@ export default function ScrollTimeline() {
   const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <section
-      ref={ref}
-      className="bg-black text-white py-32 px-6 relative overflow-hidden"
-    >
-      {/* Background Glow */}
+    <div ref={ref} className="relative bg-black text-white overflow-hidden px-6 pb-32">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-900/10 to-transparent blur-3xl pointer-events-none" />
 
-      {/* HEADER */}
-      <div className="mb-24 relative z-10">
-        <h2 className="text-5xl font-bold mb-4 tracking-tight">My Journey</h2>
-        <p className="text-neutral-400 max-w-xl mx-auto">
-          From learning fundamentals to delivering enterprise solutions — a
-          journey of growth and impact.
-        </p>
-      </div>
-
-      {/* TIMELINE */}
       <div className="relative max-w-6xl mx-auto">
         {/* Static Line */}
         <div className="absolute left-1/2 top-0 h-full w-[2px] bg-neutral-800 -translate-x-1/2" />
@@ -128,7 +114,7 @@ export default function ScrollTimeline() {
           );
         })}
       </div>
-    </section>
+    </div>
   );
 }
 

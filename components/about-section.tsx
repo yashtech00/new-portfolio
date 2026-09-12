@@ -16,22 +16,11 @@ useEffect(() => {
     .then((data) => setStats(data));
 }, []);
   return (
-    <section className="w-full flex flex-col text-center text-white">
-      <div className="flex items-center justify-evenly p-6">
+    <div className="w-full flex flex-col text-white">
+      <div className="flex flex-col lg:flex-row items-start justify-evenly gap-10 px-6 pb-10">
         
         {/* LEFT CONTENT */}
         <div className="flex flex-col text-left max-w-2xl">
-          
-          {/* Heading */}
-          <motion.h2
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-6xl md:text-7xl font-bold mb-6"
-          >
-            About Me
-          </motion.h2>
-
           {/* Intro */}
           <motion.p
             initial={{ opacity: 0, y: 30 }}
@@ -145,14 +134,13 @@ useEffect(() => {
         </div>
 
         {/* RIGHT SIDE (Images Carousel) */}
-        <div className="flex w-[40%] justify-center items-center">
+        <div className="flex w-full lg:w-[40%] justify-center items-center">
           <StaggerTestimonials />
         </div>
       </div>
 
       {/* STATS */}
-      {/* STATS */}
-<div className="flex flex-col items-center">
+      <div className="flex flex-col items-center px-6 pb-16">
   <motion.div
     initial={{ opacity: 0, y: 40 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -195,7 +183,7 @@ useEffect(() => {
     fontSize={14}
   />
 </motion.div>
-</div>
-    </section>
+      </div>
+    </div>
   );
 }

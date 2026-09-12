@@ -10,6 +10,9 @@ import { ConnectWithMe } from "@/components/connect-with-me";
 import ScrollTimeline from "@/components/timeline-feature";
 import AboutSection from "@/components/about-section";
 import { WhatIDo } from "@/components/what-i-do";
+import { StackSection } from "@/components/stack-section";
+import { AndroidConcepts } from "@/components/android-concepts";
+
 export default function Home() {
   const [showIntro, setShowIntro] = useState(true);
   useEffect(() => {
@@ -19,7 +22,7 @@ export default function Home() {
     return () => clearTimeout(timer);
   }, []);
   return (
-    <div className="w-full  bg-black">
+    <div className="w-full bg-black">
       <AnimatePresence mode="wait">
         {showIntro ? (
           <motion.div
@@ -38,36 +41,73 @@ export default function Home() {
             />
           </motion.div>
         ) : (
-          <main className="relative">
-            {/* HERO: Stays pinned at the very bottom */}
-            <section className="sticky top-0 z-10 h-screen w-full overflow-hidden">
+          <main className="relative bg-black">
+            {/* HERO: pinned behind everything */}
+            <section className="sticky top-0 z-10 h-screen w-full overflow-hidden bg-black">
               <Navbar />
               <HeroSection />
             </section>
 
-            {/* WHAT I DO: Slides over Hero, then its own cards stack inside */}
-            <section className="relative z-20 bg-black shadow-[0_-20px_50px_rgba(0,0,0,1)]">
+            <StackSection
+              id="services"
+              zIndex={20}
+              title="WHAT I DO /"
+              label="(SERVICES)"
+              description="I specialize in building fast, reliable, and user-friendly full-stack web applications. I help small businesses and startups turn ideas into high-quality websites and products that actually work and scale."
+            >
               <WhatIDo />
-            </section>
+            </StackSection>
 
-            {/* ABOUT: Slides over the completed WhatIDo stack */}
-            <section className="relative z-30 min-h-screen w-full bg-black shadow-[0_-20px_50px_rgba(0,0,0,1)]">
+            <StackSection
+              id="projects"
+              zIndex={30}
+              title="SELECTED WORKS /"
+              label="(PROJECTS)"
+              description="Those late-night builds — real products shipped with clean architecture, thoughtful UX, and production-ready code."
+            >
               <Projects />
-              
-            </section>
+            </StackSection>
 
-            {/* JOURNEY/TIMELINE: Slides over About */}
-            <section className="relative z-40 min-h-screen w-full bg-black shadow-[0_-20px_50px_rgba(0,0,0,1)]">
+            <StackSection
+              id="android"
+              zIndex={35}
+              title="ANDROID DEV /"
+              label="(CONCEPTS)"
+              description="Core performance, architecture, and system concepts every Android developer should know — from cold starts and ANR to structured concurrency and WorkManager."
+            >
+              <AndroidConcepts />
+            </StackSection>
+
+            <StackSection
+              id="about"
+              zIndex={40}
+              title="ABOUT ME /"
+              label="(INTRO)"
+              description="Full-Stack Developer & Analyst focused on building scalable, high-performance, and AI-driven solutions that solve real-world business problems."
+            >
               <AboutSection />
-            </section>
+            </StackSection>
 
-            {/* FINAL SECTIONS: Move together */}
-            <div className="relative z-50 bg-black">
+            <StackSection
+              id="timeline"
+              zIndex={50}
+              title="MY JOURNEY /"
+              label="(EXPERIENCE)"
+              description="From learning fundamentals to delivering enterprise solutions — a journey of growth, impact, and continuous building."
+            >
               <ScrollTimeline />
-              
+            </StackSection>
+
+            <StackSection
+              id="contact"
+              zIndex={60}
+              title="LET'S CONNECT /"
+              label="(CONTACT)"
+              description="Whether it's a project, idea, or collaboration — I'm always open to meaningful conversations and building something amazing together."
+            >
               <ConnectWithMe />
               <Footer />
-            </div>
+            </StackSection>
           </main>
         )}
       </AnimatePresence>
