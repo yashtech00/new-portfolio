@@ -11,7 +11,6 @@ import ScrollTimeline from "@/components/timeline-feature";
 import AboutSection from "@/components/about-section";
 import { WhatIDo } from "@/components/what-i-do";
 import { StackSection } from "@/components/stack-section";
-import { AndroidConcepts } from "@/components/android-concepts";
 
 export default function Home() {
   const [showIntro, setShowIntro] = useState(true);
@@ -66,16 +65,6 @@ export default function Home() {
               description="Those late-night builds — real products shipped with clean architecture, thoughtful UX, and production-ready code."
             >
               <Projects />
-            </StackSection>
-
-            <StackSection
-              id="android"
-              zIndex={35}
-              title="ANDROID DEV /"
-              label="(CONCEPTS)"
-              description="Core performance, architecture, and system concepts every Android developer should know — from cold starts and ANR to structured concurrency and WorkManager."
-            >
-              <AndroidConcepts />
             </StackSection>
 
             <StackSection
