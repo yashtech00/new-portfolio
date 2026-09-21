@@ -39,24 +39,24 @@ export const Projects = () => {
 
   if (loading) {
     return (
-      <div className="px-6 pb-20 text-white">
-        <p className="text-neutral-500 text-center py-20">Loading projects...</p>
+      <div className="text-[var(--on-surface)]">
+        <p className="text-[var(--on-surface-variant)] text-center py-20 font-mono text-sm">
+          Loading selected projects...
+        </p>
       </div>
     );
   }
 
   return (
-    <div className="px-6 pb-20 text-white">
-      <div className="max-w-7xl mx-auto space-y-32">
-        {projects.map((project, index) => (
-          <ProjectRow
-            key={project.id}
-            project={project}
-            reverse={index % 2 !== 0}
-          />
-        ))}
-        <ViewAllProjectsLink />
-      </div>
+    <div className="space-y-16 md:space-y-24 text-[var(--on-surface)]">
+      {projects.map((project, index) => (
+        <ProjectRow
+          key={project.id}
+          project={project}
+          reverse={index % 2 !== 0}
+        />
+      ))}
+      <ViewAllProjectsLink />
     </div>
   );
 };

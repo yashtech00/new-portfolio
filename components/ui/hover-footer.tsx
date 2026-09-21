@@ -52,11 +52,10 @@ export const TextHoverEffect = ({
         >
           {hovered && (
             <>
-              <stop offset="0%" stopColor="#eab308" />
-              <stop offset="25%" stopColor="#ef4444" />
-              <stop offset="50%" stopColor="#80eeb4" />
-              <stop offset="75%" stopColor="#06b6d4" />
-              <stop offset="100%" stopColor="#8b5cf6" />
+              <stop offset="0%" stopColor="#0e8f8b" />
+              <stop offset="35%" stopColor="#006a67" />
+              <stop offset="70%" stopColor="#0b1c2c" />
+              <stop offset="100%" stopColor="#8cf4ee" />
             </>
           )}
         </linearGradient>
@@ -64,7 +63,7 @@ export const TextHoverEffect = ({
         <motion.radialGradient
           id="revealMask"
           gradientUnits="userSpaceOnUse"
-          r="20%"
+          r="25%"
           initial={{ cx: "50%", cy: "50%" }}
           animate={maskPosition}
           transition={{ duration: duration ?? 0, ease: "easeOut" }}
@@ -87,9 +86,9 @@ export const TextHoverEffect = ({
         y="50%"
         textAnchor="middle"
         dominantBaseline="middle"
-        strokeWidth="0.3"
-        className="fill-transparent stroke-neutral-200 font-[helvetica] text-7xl font-bold dark:stroke-neutral-800"
-        style={{ opacity: hovered ? 0.7 : 0 }}
+        strokeWidth="0.4"
+        className="fill-transparent stroke-[var(--outline-variant)] font-sans text-7xl font-bold"
+        style={{ opacity: hovered ? 0.7 : 0.4 }}
       >
         {text}
       </text>
@@ -98,9 +97,8 @@ export const TextHoverEffect = ({
         y="50%"
         textAnchor="middle"
         dominantBaseline="middle"
-        strokeWidth="0.3"
-        className="fill-transparent stroke-[#3ca2fa] font-[helvetica] text-7xl font-bold 
-        dark:stroke-[#3ca2fa99]"
+        strokeWidth="0.4"
+        className="fill-transparent stroke-[var(--teal)] font-sans text-7xl font-bold"
         initial={{ strokeDashoffset: 1000, strokeDasharray: 1000 }}
         animate={{
           strokeDashoffset: 0,
@@ -119,25 +117,12 @@ export const TextHoverEffect = ({
         textAnchor="middle"
         dominantBaseline="middle"
         stroke="url(#textGradient)"
-        strokeWidth="0.3"
+        strokeWidth="0.4"
         mask="url(#textMask)"
-        className="fill-transparent font-[helvetica] text-7xl font-bold"
+        className="fill-transparent font-sans text-7xl font-bold"
       >
         {text}
       </text>
     </svg>
-  );
-};
-
-
-export const FooterBackgroundGradient = () => {
-  return (
-    <div
-      className="absolute inset-0 z-0"
-      style={{
-        background:
-          "radial-gradient(125% 125% at 50% 10%, #0F0F1166 50%, #3ca2fa33 100%)",
-      }}
-    />
   );
 };

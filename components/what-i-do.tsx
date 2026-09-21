@@ -1,8 +1,5 @@
 "use client";
 
-const STICKY_TOP_BASE = 96;
-const CARD_STACK_OFFSET = 80;
-
 const services = [
   {
     id: "01",
@@ -41,62 +38,50 @@ const services = [
 
 export const WhatIDo = () => {
   return (
-    <div className="px-6 pb-10">
-      <section className="text-white">
+    <div className="flex flex-col gap-8 md:gap-10 text-[#1c1c18]">
+      {services.map((service) => (
         <div
-          className="relative"
-          style={{ height: `${services.length * 100}vh` }}
+          key={service.id}
+          className="w-full bg-white rounded-3xl border border-[rgba(11,28,44,0.08)] shadow-[0_12px_40px_rgba(11,28,44,0.05)] overflow-hidden transition-all duration-300 hover:border-[#0e8f8b]/40 hover:shadow-[0_16px_40px_rgba(11,28,44,0.06)]"
+          style={{ backgroundColor: "#ffffff" }}
         >
-          {services.map((service, index) => (
-            <div
-              key={service.id}
-              className="sticky w-full"
-              style={{
-                top: STICKY_TOP_BASE + index * CARD_STACK_OFFSET,
-                zIndex: 10 + index,
-              }}
-            >
-              <div className="min-h-[calc(100dvh-96px)] bg-black border-t border-neutral-800 shadow-[0_-12px_40px_rgba(0,0,0,0.9)]">
-                <div
-                  className="flex items-center justify-between gap-6 px-6 md:px-12 border-b border-neutral-800/60"
-                  style={{ height: CARD_STACK_OFFSET }}
-                >
-                  <span className="text-orange-500 font-bold text-2xl md:text-3xl shrink-0">
-                    ({service.id})
-                  </span>
-                  <h3 className="min-w-0 text-2xl md:text-4xl lg:text-5xl font-bold tracking-tighter leading-tight line-clamp-2 text-right md:text-left">
-                    {service.title}
-                  </h3>
-                </div>
+          <div
+            className="flex items-center justify-between gap-6 px-6 md:px-12 py-6 border-b border-[rgba(11,28,44,0.08)] bg-[#f6f3ed]"
+            style={{ backgroundColor: "#f6f3ed" }}
+          >
+            <span className="text-[#0e8f8b] font-mono font-bold text-xl md:text-2xl shrink-0">
+              ({service.id})
+            </span>
+            <h3 className="display-font min-w-0 text-xl md:text-3xl lg:text-4xl font-semibold tracking-tight text-[#0b1c2c] text-right md:text-left">
+              {service.title}
+            </h3>
+          </div>
 
-                <div className="flex justify-end px-6 md:px-12 py-10 md:py-14">
-                  <div className="flex flex-col gap-8 md:w-2/4 w-full">
-                    <p className="text-neutral-400 text-lg md:text-xl leading-relaxed max-w-xl">
-                      {service.description}
-                    </p>
+          <div className="flex justify-end px-6 md:px-12 py-8 md:py-12 bg-white" style={{ backgroundColor: "#ffffff" }}>
+            <div className="flex flex-col gap-8 md:w-2/4 w-full">
+              <p className="text-[#44474c] text-base md:text-lg lg:text-xl leading-relaxed max-w-xl">
+                {service.description}
+              </p>
 
-                    <div className="space-y-0">
-                      {service.skills.map((skill, i) => (
-                        <div key={i}>
-                          <div className="flex items-center gap-4 py-4">
-                            <p className="text-xs text-neutral-500 shrink-0">
-                              0{i + 1}
-                            </p>
-                            <p className="text-lg md:text-xl font-bold">
-                              {skill}
-                            </p>
-                          </div>
-                          <div className="h-px bg-neutral-800" />
-                        </div>
-                      ))}
+              <div className="space-y-0">
+                {service.skills.map((skill, i) => (
+                  <div key={i}>
+                    <div className="flex items-center gap-4 py-3.5">
+                      <span className="text-xs text-[#0e8f8b] font-mono font-semibold shrink-0">
+                        0{i + 1}
+                      </span>
+                      <p className="text-base md:text-lg font-medium text-[#0b1c2c]">
+                        {skill}
+                      </p>
                     </div>
+                    <div className="h-px bg-[rgba(11,28,44,0.08)]" />
                   </div>
-                </div>
+                ))}
               </div>
             </div>
-          ))}
+          </div>
         </div>
-      </section>
+      ))}
     </div>
   );
 };

@@ -142,17 +142,17 @@ export function ProjectForm({ editing, onSaved, onCancelEdit }: ProjectFormProps
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-white/5 border border-white/10 rounded-2xl p-6 space-y-4"
+      className="bg-[var(--surface-container-lowest)] border border-[var(--glass-border)] rounded-2xl p-6 space-y-4 shadow-xs"
     >
-      <div className="flex items-center justify-between">
-        <h2 className="text-xl font-bold text-white">
+      <div className="flex items-center justify-between pb-3 border-b border-[var(--glass-border)]">
+        <h2 className="text-xl font-bold text-[var(--ink)] display-font">
           {editing ? "Edit Project" : "Add Project"}
         </h2>
         {editing && onCancelEdit && (
           <button
             type="button"
             onClick={onCancelEdit}
-            className="text-sm text-neutral-400 hover:text-white"
+            className="text-sm text-[var(--on-surface-variant)] hover:text-[var(--teal)] font-medium"
           >
             Cancel edit
           </button>
@@ -163,7 +163,7 @@ export function ProjectForm({ editing, onSaved, onCancelEdit }: ProjectFormProps
         placeholder="Title"
         value={form.title}
         onChange={(e) => setForm({ ...form, title: e.target.value })}
-        className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-2.5 text-white outline-none focus:border-orange-500"
+        className="w-full bg-[var(--surface-container-low)] border border-[var(--outline-variant)] rounded-xl px-4 py-2.5 text-[var(--ink)] outline-none focus:border-[var(--teal)] transition-colors"
         required
       />
 
@@ -171,7 +171,7 @@ export function ProjectForm({ editing, onSaved, onCancelEdit }: ProjectFormProps
         placeholder="Short description"
         value={form.description}
         onChange={(e) => setForm({ ...form, description: e.target.value })}
-        className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-2.5 text-white outline-none focus:border-orange-500"
+        className="w-full bg-[var(--surface-container-low)] border border-[var(--outline-variant)] rounded-xl px-4 py-2.5 text-[var(--ink)] outline-none focus:border-[var(--teal)] transition-colors"
         required
       />
 
@@ -180,7 +180,7 @@ export function ProjectForm({ editing, onSaved, onCancelEdit }: ProjectFormProps
         value={form.longDescription}
         onChange={(e) => setForm({ ...form, longDescription: e.target.value })}
         rows={4}
-        className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-2.5 text-white outline-none focus:border-orange-500 resize-none"
+        className="w-full bg-[var(--surface-container-low)] border border-[var(--outline-variant)] rounded-xl px-4 py-2.5 text-[var(--ink)] outline-none focus:border-[var(--teal)] transition-colors resize-none"
         required
       />
 
@@ -188,7 +188,7 @@ export function ProjectForm({ editing, onSaved, onCancelEdit }: ProjectFormProps
         placeholder="Tech stack (comma separated)"
         value={form.tech}
         onChange={(e) => setForm({ ...form, tech: e.target.value })}
-        className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-2.5 text-white outline-none focus:border-orange-500"
+        className="w-full bg-[var(--surface-container-low)] border border-[var(--outline-variant)] rounded-xl px-4 py-2.5 text-[var(--ink)] outline-none focus:border-[var(--teal)] transition-colors"
       />
 
       <div className="grid grid-cols-2 gap-3">
@@ -196,13 +196,13 @@ export function ProjectForm({ editing, onSaved, onCancelEdit }: ProjectFormProps
           placeholder="GitHub URL"
           value={form.github}
           onChange={(e) => setForm({ ...form, github: e.target.value })}
-          className="bg-black/40 border border-white/10 rounded-lg px-4 py-2.5 text-white outline-none focus:border-orange-500"
+          className="bg-[var(--surface-container-low)] border border-[var(--outline-variant)] rounded-xl px-4 py-2.5 text-[var(--ink)] outline-none focus:border-[var(--teal)] transition-colors"
         />
         <input
           placeholder="Demo URL"
           value={form.demo}
           onChange={(e) => setForm({ ...form, demo: e.target.value })}
-          className="bg-black/40 border border-white/10 rounded-lg px-4 py-2.5 text-white outline-none focus:border-orange-500"
+          className="bg-[var(--surface-container-low)] border border-[var(--outline-variant)] rounded-xl px-4 py-2.5 text-[var(--ink)] outline-none focus:border-[var(--teal)] transition-colors"
         />
       </div>
 
@@ -212,38 +212,38 @@ export function ProjectForm({ editing, onSaved, onCancelEdit }: ProjectFormProps
           placeholder="Order"
           value={form.order}
           onChange={(e) => setForm({ ...form, order: Number(e.target.value) })}
-          className="bg-black/40 border border-white/10 rounded-lg px-4 py-2.5 text-white outline-none focus:border-orange-500"
+          className="bg-[var(--surface-container-low)] border border-[var(--outline-variant)] rounded-xl px-4 py-2.5 text-[var(--ink)] outline-none focus:border-[var(--teal)] transition-colors"
         />
-        <label className="flex items-center gap-2 text-neutral-300 text-sm px-2">
+        <label className="flex items-center gap-2 text-[var(--on-surface-variant)] text-sm px-2 font-medium">
           <input
             type="checkbox"
             checked={form.featured}
             onChange={(e) => setForm({ ...form, featured: e.target.checked })}
-            className="accent-orange-500"
+            className="accent-[var(--teal)]"
           />
           Featured on homepage
         </label>
       </div>
 
       <div className="space-y-2">
-        <label className="block text-sm text-neutral-400">Images</label>
+        <label className="block text-sm text-[var(--on-surface-variant)] font-medium">Images</label>
         <input
           type="file"
           accept="image/*"
           multiple
           onChange={handleImageUpload}
           disabled={uploading}
-          className="text-sm text-neutral-400"
+          className="text-sm text-[var(--on-surface-variant)]"
         />
         {form.images.length > 0 && (
           <div className="flex flex-wrap gap-2 mt-2">
             {form.images.map((url, i) => (
               <div key={i} className="relative group">
-                <img src={url} alt="" className="w-20 h-14 object-cover rounded border border-white/10" />
+                <img src={url} alt="" className="w-20 h-14 object-cover rounded border border-[var(--glass-border)]" />
                 <button
                   type="button"
                   onClick={() => removeImage(i)}
-                  className="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full opacity-0 group-hover:opacity-100 transition"
+                  className="absolute -top-1 -right-1 bg-red-600 text-white text-xs w-5 h-5 rounded-full opacity-0 group-hover:opacity-100 transition"
                 >
                   ×
                 </button>
@@ -254,25 +254,25 @@ export function ProjectForm({ editing, onSaved, onCancelEdit }: ProjectFormProps
       </div>
 
       <div className="space-y-2">
-        <label className="block text-sm text-neutral-400">Video (optional)</label>
+        <label className="block text-sm text-[var(--on-surface-variant)] font-medium">Video (optional)</label>
         <input
           type="file"
           accept="video/*"
           onChange={handleVideoUpload}
           disabled={uploading}
-          className="text-sm text-neutral-400"
+          className="text-sm text-[var(--on-surface-variant)]"
         />
         {form.video && (
-          <p className="text-xs text-green-400 truncate">Video uploaded ✓</p>
+          <p className="text-xs text-[var(--teal)] font-mono truncate">Video uploaded ✓</p>
         )}
       </div>
 
-      {error && <p className="text-red-400 text-sm">{error}</p>}
+      {error && <p className="text-red-600 text-sm">{error}</p>}
 
       <button
         type="submit"
         disabled={saving || uploading}
-        className="w-full bg-orange-500 hover:bg-orange-600 disabled:opacity-50 text-white font-semibold py-3 rounded-lg transition"
+        className="w-full bg-[var(--teal)] hover:bg-[var(--teal-strong)] disabled:opacity-50 text-white font-semibold py-3 rounded-xl transition shadow-xs"
       >
         {saving ? "Saving..." : uploading ? "Uploading..." : editing ? "Update Project" : "Create Project"}
       </button>

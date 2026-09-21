@@ -63,7 +63,7 @@ const GlowCard: React.FC<GlowCardProps> = ({
   };
 
   const getInlineStyles = () => {
-    const baseStyles = {
+    const baseStyles: Record<string, any> = {
       '--base': base,
       '--spread': spread,
       '--radius': '14',
@@ -171,7 +171,7 @@ const GlowCard: React.FC<GlowCardProps> = ({
           relative 
           grid 
           grid-rows-[1fr_auto] 
-          shadow-[0_1rem_2rem_-1rem_black] 
+          shadow-[0_1rem_2rem_-1rem_rgba(11,28,44,0.06)] 
           p-4 
           gap-4 
           backdrop-blur-[5px]

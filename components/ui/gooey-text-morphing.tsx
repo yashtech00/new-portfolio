@@ -13,10 +13,10 @@ interface GooeyTextProps {
 
 export function GooeyText({
   texts,
-  morphTime = 1,
+  morphTime = 0.9,
   cooldownTime = 0.25,
   className,
-  textClassName
+  textClassName,
 }: GooeyTextProps) {
   const text1Ref = React.useRef<HTMLSpanElement>(null);
   const text2Ref = React.useRef<HTMLSpanElement>(null);
@@ -29,12 +29,12 @@ export function GooeyText({
 
     const setMorph = (fraction: number) => {
       if (text1Ref.current && text2Ref.current) {
-        text2Ref.current.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
+        text2Ref.current.style.filter = `blur(${Math.min(6 / fraction - 6, 20)}px)`;
         text2Ref.current.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
 
-        fraction = 1 - fraction;
-        text1Ref.current.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
-        text1Ref.current.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
+        const f1 = 1 - fraction;
+        text1Ref.current.style.filter = `blur(${Math.min(6 / f1 - 6, 20)}px)`;
+        text1Ref.current.style.opacity = `${Math.pow(f1, 0.4) * 100}%`;
       }
     };
 
@@ -85,50 +85,24 @@ export function GooeyText({
     }
 
     animate();
-
-    return () => {
-      // Cleanup function if needed
-    };
   }, [texts, morphTime, cooldownTime]);
 
   return (
-    <div className={cn("relative", className)}>
-      <svg className="absolute h-0 w-0" aria-hidden="true" focusable="false">
-        <defs>
-          <filter id="threshold">
-            <feColorMatrix
-              in="SourceGraphic"
-              type="matrix"
-              values="1 0 0 0 0
-                      0 1 0 0 0
-                      0 0 1 0 0
-                      0 0 0 255 -140"
-            />
-          </filter>
-        </defs>
-      </svg>
-
-      <div
-        className="flex items-center justify-center"
-        style={{ filter: "url(#threshold)" }}
-      >
-        <span
-          ref={text1Ref}
-          className={cn(
-            "absolute inline-block select-none text-center text-6xl md:text-[60pt]",
-            "text-white",
-            textClassName
-          )}
-        />
-        <span
-          ref={text2Ref}
-          className={cn(
-            "absolute inline-block select-none text-center text-6xl md:text-[60pt]",
-            "text-white",
-            textClassName
-          )}
-        />
-      </div>
+    <div className={cn("relative flex items-center justify-center min-h-[100px]", className)}>
+      <span
+        ref={text1Ref}
+        className={cn(
+          "absolute inline-block select-none text-center text-5xl sm:text-6xl md:text-7xl display-font font-medium text-[#0b1c2c]",
+          textClassName
+        )}
+      />
+      <span
+        ref={text2Ref}
+        className={cn(
+          "absolute inline-block select-none text-center text-5xl sm:text-6xl md:text-7xl display-font font-medium text-[#0b1c2c]",
+          textClassName
+        )}
+      />
     </div>
   );
 }

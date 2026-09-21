@@ -40,28 +40,40 @@ export default function AllProjectsPage() {
   }, []);
 
   return (
-    <div className="bg-black text-white min-h-screen">
+    <div
+      className="bg-[var(--surface)] text-[var(--on-surface)] min-h-screen"
+      style={{ backgroundColor: "#fcf9f3", color: "#1c1c18" }}
+    >
       <Navbar />
-      <div className="px-6 py-16 max-w-7xl mx-auto">
+      <div className="container-page py-16">
         <div className="mb-16">
           <Link
             href="/"
-            className="text-sm text-neutral-400 hover:text-white transition mb-6 inline-block"
+            className="inline-flex items-center gap-2 text-sm font-medium text-[var(--on-surface-variant)] hover:text-[var(--teal-strong)] transition-colors mb-6"
           >
             ← Back to Home
           </Link>
-          <h1 className="text-5xl md:text-6xl font-bold mt-4">All Projects</h1>
-          <p className="text-neutral-400 mt-3 text-lg">
-            Everything I&apos;ve built — side projects, tools & experiments.
+          <div className="flex items-center gap-3">
+            <span className="label-eyebrow">Archive &amp; Builds</span>
+          </div>
+          <h1 className="display-font text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-[var(--ink)] mt-3">
+            All Projects
+          </h1>
+          <p className="text-[var(--on-surface-variant)] mt-3 text-lg md:text-xl max-w-2xl leading-relaxed">
+            Everything I&apos;ve built — client engagements, production web apps, tools &amp; experiments.
           </p>
         </div>
 
         {loading ? (
-          <p className="text-neutral-500 text-center py-20">Loading projects...</p>
+          <p className="text-[var(--on-surface-variant)] text-center py-20 font-mono text-sm">
+            Loading projects...
+          </p>
         ) : projects.length === 0 ? (
-          <p className="text-neutral-500 text-center py-20">No projects yet.</p>
+          <p className="text-[var(--on-surface-variant)] text-center py-20 font-mono text-sm">
+            No projects found.
+          </p>
         ) : (
-          <div className="space-y-32">
+          <div className="space-y-16 md:space-y-24">
             {projects.map((project, index) => (
               <ProjectRow
                 key={project.id}

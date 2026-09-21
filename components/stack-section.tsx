@@ -1,9 +1,8 @@
-import { SectionHeader } from "@/components/section-header";
 import { ReactNode } from "react";
 
 type StackSectionProps = {
   id?: string;
-  zIndex: number;
+  zIndex?: number;
   title: string;
   label?: string;
   description?: string;
@@ -12,27 +11,57 @@ type StackSectionProps = {
 
 export function StackSection({
   id,
-  zIndex,
   title,
   label,
   description,
   children,
 }: StackSectionProps) {
   return (
-    <section id={id} className="relative w-full bg-black" style={{ zIndex }}>
-      {/* Header pins while scrolling through this section's content */}
+    <section
+      id={id}
+      className="relative w-full border-t border-[rgba(11,28,44,0.08)] bg-[#fcf9f3]"
+      style={{ backgroundColor: "#fcf9f3" }}
+    >
+      {/* Sticky Large Section Heading ONLY */}
       <div
-        className="sticky top-0 bg-black shadow-[0_-20px_50px_rgba(0,0,0,1)]"
-        style={{ zIndex }}
+        className="sticky top-0 z-20 w-full bg-[#fcf9f3] py-4 sm:py-6 border-b border-[rgba(11,28,44,0.06)]"
+        style={{ backgroundColor: "#fcf9f3" }}
       >
-        <div className="p-5 pb-0">
-          <SectionHeader title={title} label={label} description={description} />
+        <div className="container-page">
+          <h2 className="display-font text-[#0b1c2c] font-semibold text-3xl sm:text-5xl md:text-7xl lg:text-8xl tracking-tight leading-none select-none">
+            {title}
+          </h2>
         </div>
       </div>
 
-      {/* Full content scrolls naturally — next section covers only after this ends */}
-      <div className="relative bg-black" style={{ zIndex }}>
-        {children}
+      {/* Full content scrolls naturally underneath */}
+      <div className="relative w-full">
+        {/* Section metadata / eyebrow & description (NOT sticky) */}
+        {(label || description) && (
+          <div className="w-full border-b border-[rgba(11,28,44,0.06)]">
+            <div className="container-page flex flex-col md:flex-row justify-between items-start gap-4 md:gap-12 py-8 md:py-12">
+              {label && (
+                <div className="md:w-1/3">
+                  <span className="label-eyebrow text-xs font-bold text-[#0e8f8b] tracking-widest uppercase">
+                    {label}
+                  </span>
+                </div>
+              )}
+              {description && (
+                <div className={label ? "md:w-2/3 lg:w-1/2" : "w-full"}>
+                  <p className="text-[#44474c] text-base md:text-lg lg:text-xl leading-relaxed">
+                    {description}
+                  </p>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* Section content (cards, timeline, projects, etc.) inside container-page */}
+        <div className="container-page pt-8 md:pt-12 pb-16 md:pb-24">
+          {children}
+        </div>
       </div>
     </section>
   );

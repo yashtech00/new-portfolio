@@ -20,6 +20,10 @@ function Footer() {
   ];
 
   const handleScroll = (id: string) => {
+    if (id === "home") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
@@ -27,31 +31,39 @@ function Footer() {
   };
 
   const socialLinks = [
-    { icon: <Github size={18} />, href: "https://github.com/yashtech00" },
-    { icon: <Linkedin size={18} />, href: "https://linkedin.com/in/yash00tech" },
-    { icon: <Twitter size={18} />, href: "https://x.com/yashgtech00" },
+    { icon: <Github size={18} />, href: "https://github.com/yashtech00", label: "GitHub" },
+    { icon: <Linkedin size={18} />, href: "https://linkedin.com/in/yash00tech", label: "LinkedIn" },
+    { icon: <Twitter size={18} />, href: "https://x.com/yashgtech00", label: "Twitter" },
   ];
 
   return (
-    <footer className="bg-[#0B0B0C] relative overflow-hidden mx-4 md:mx-6 rounded-2xl border border-white/10">
-      <div className="max-w-7xl mx-auto px-6 md:px-8 pt-10 pb-6 relative z-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
-          <div className="max-w-sm">
-            <h2 className="text-2xl font-bold text-white mb-3">Yash Gupta</h2>
-            <p className="text-neutral-400 text-sm leading-relaxed">
-              Full-Stack Developer focused on building scalable, high-performance
+    <footer
+      className="relative w-full overflow-hidden bg-[var(--surface-container-low)] border-t border-[var(--glass-border)] pt-14 pb-8"
+      style={{ backgroundColor: "#f6f3ed" }}
+    >
+      <div className="container-page relative z-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 mb-10">
+          
+          <div className="lg:col-span-6 max-w-sm">
+            <h2 className="display-font text-2xl md:text-3xl font-bold text-[var(--ink)] mb-3">
+              Yash Gupta
+            </h2>
+            <p className="text-[var(--on-surface-variant)] text-sm md:text-base leading-relaxed">
+              Full-Stack Developer &amp; Analyst focused on engineering scalable, high-performance
               applications and solving real-world business problems with clean architecture.
             </p>
           </div>
 
-          <div>
-            <h4 className="text-white font-semibold text-sm mb-3">Navigation</h4>
-            <div className="flex flex-col gap-2">
+          <div className="lg:col-span-3">
+            <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[var(--teal-strong)] mb-4">
+              Navigation
+            </h4>
+            <div className="flex flex-col gap-2.5">
               {navLinks.map((link) => (
                 <button
                   key={link.id}
                   onClick={() => handleScroll(link.id)}
-                  className="text-neutral-400 hover:text-white transition text-sm text-left"
+                  className="text-[var(--on-surface-variant)] hover:text-[var(--teal-strong)] transition-colors text-sm text-left font-medium"
                 >
                   {link.label}
                 </button>
@@ -59,60 +71,55 @@ function Footer() {
             </div>
           </div>
 
-          <div>
-            <h4 className="text-white font-semibold text-sm mb-3">Contact</h4>
-            <div className="flex flex-col gap-2.5 text-neutral-400 text-sm">
+          <div className="lg:col-span-3">
+            <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[var(--teal-strong)] mb-4">
+              Contact
+            </h4>
+            <div className="flex flex-col gap-3 text-[var(--on-surface-variant)] text-sm">
               <a
                 href="mailto:yashgtech00@gmail.com"
-                className="flex items-center gap-2 hover:text-white transition"
+                className="flex items-center gap-2.5 hover:text-[var(--teal-strong)] transition-colors"
               >
-                <Mail size={15} />
+                <Mail size={15} className="text-[var(--teal)]" />
                 <span>yashgtech00@gmail.com</span>
               </a>
-              <div className="flex items-center gap-2">
-                <Phone size={15} />
+              <div className="flex items-center gap-2.5">
+                <Phone size={15} className="text-[var(--teal)]" />
                 <span>+91 7879758136</span>
               </div>
-              <div className="flex items-center gap-2">
-                <MapPin size={15} />
+              <div className="flex items-center gap-2.5">
+                <MapPin size={15} className="text-[var(--teal)]" />
                 <span>Gurgaon, Haryana, India</span>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="hidden lg:block h-24 -mx-6 md:-mx-8 mb-2 pointer-events-none">
+        <div className="hidden lg:block h-24 w-full mb-4 pointer-events-none opacity-80">
           <TextHoverEffect text="YASH" />
         </div>
 
-        <div className="border-t border-white/10 pt-5 flex flex-col sm:flex-row justify-between items-center gap-3">
-          <div className="flex gap-5 text-neutral-400">
+        <div className="border-t border-[var(--glass-border)] pt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <div className="flex gap-4 text-[var(--on-surface-variant)]">
             {socialLinks.map((item, i) => (
               <a
                 key={i}
                 href={item.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-white transition"
+                aria-label={item.label}
+                className="w-9 h-9 rounded-full border border-[var(--glass-border)] bg-[var(--surface-container)] flex items-center justify-center hover:text-[var(--teal)] hover:border-[var(--teal)] transition-colors"
               >
                 {item.icon}
               </a>
             ))}
           </div>
 
-          <p className="text-neutral-500 text-xs md:text-sm">
+          <p className="text-[var(--on-surface-variant)] text-xs font-mono">
             © {new Date().getFullYear()} Yash Gupta. Built with precision.
           </p>
         </div>
       </div>
-
-      <div
-        className="absolute inset-0 z-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(125% 125% at 50% 0%, #0F0F11 60%, #3ca2fa15 100%)",
-        }}
-      />
     </footer>
   );
 }

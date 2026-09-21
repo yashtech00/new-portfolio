@@ -3,13 +3,6 @@
 import { ArrowUpRight, Github, Linkedin, Twitter } from "lucide-react";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { FlickeringGrid } from "./ui/flickering-grid";
-import { Bebas_Neue } from "next/font/google";
-
-const bebas = Bebas_Neue({
-  weight: "400",
-  subsets: ["latin"],
-});
 
 const socialLinks = [
   { icon: Linkedin, href: "https://linkedin.com/in/yash00tech", label: "LinkedIn" },
@@ -19,151 +12,150 @@ const socialLinks = [
 
 export const HeroSection = () => {
   const { scrollY } = useScroll();
-  const scale = useTransform(scrollY, [0, 500], [1, 0.9]);
+  const scale = useTransform(scrollY, [0, 500], [1, 0.96]);
+  const opacity = useTransform(scrollY, [0, 400], [1, 0.85]);
 
   return (
     <motion.section
-      style={{ scale }}
-      className="relative h-[calc(100dvh-68px)] overflow-hidden px-8 md:px-14 text-white"
+      style={{ scale, opacity, backgroundColor: "#fcf9f3" }}
+      className="relative min-h-[calc(100dvh-68px)] flex items-center overflow-hidden py-12 lg:py-0 bg-[#fcf9f3] text-[#1c1c18]"
     >
-      {/* Background */}
-     
-
-      {/* Fade Gradient Overlay */}
-      <div className="absolute inset-0 -z-5 bg-gradient-to-b from-black via-transparent to-black opacity-80" />
-
-      {/* Glow */}
-      <div className="absolute inset-0 -z-10 pointer-events-none">
-        <div className="absolute w-[700px] h-[700px] bg-purple-600/30 blur-[150px] rounded-full top-[-150px] left-[-100px] animate-pulse" />
-        <div className="absolute w-[500px] h-[500px] bg-orange-500/20 blur-[120px] rounded-full bottom-[-100px] right-[-100px] animate-pulse" />
+      {/* Subtle Teal Ambient Glow (Editorial & Soft) */}
+      <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
+        <div className="absolute w-[600px] h-[600px] bg-[radial-gradient(circle,rgba(14,143,139,0.08)_0%,transparent_70%)] -top-40 -left-20" />
+        <div className="absolute w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(11,28,44,0.04)_0%,transparent_70%)] bottom-0 right-0" />
       </div>
 
-      {/* ── MAIN GRID — vertically centered ── */}
-      <div className="relative z-20 grid h-full grid-cols-1 lg:grid-cols-2 items-center gap-10 lg:gap-8">
-
-        {/* Left — name + bio */}
-        <div className="flex flex-col gap-8 lg:gap-10 order-2 lg:order-1 lg:pr-6">
-
-          {/* Name — pushed down via grid center, not stuck to top */}
-          <motion.h1
-            initial={{ opacity: 0, y: -20 }}
+      {/* Main Grid */}
+      <div className="container-page relative z-10 grid grid-cols-1 lg:grid-cols-12 items-center gap-12 lg:gap-8">
+        
+        {/* Left Column (Editorial Typography & CTAs) */}
+        <div className="lg:col-span-7 flex flex-col gap-6 lg:gap-8 order-2 lg:order-1">
+          
+          {/* Eyebrow */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className={`${bebas.className} text-[18vw] md:text-[16vw] lg:text-[14vw] xl:text-[12vw] leading-[0.88] tracking-tight text-white select-none`}
+            transition={{ duration: 0.5 }}
+            className="flex items-center gap-3"
           >
-            YASH GUPTA
+            <span className="label-eyebrow tracking-widest text-xs font-bold text-[#0e8f8b]">
+              Full-Stack Developer &amp; Analyst
+            </span>
+            <span className="h-px w-8 bg-[#c4c6cc]" />
+            <span className="text-xs text-[#44474c] font-mono">
+              KPMG INDIA
+            </span>
+          </motion.div>
+
+          {/* Headline (Editorial display font) */}
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="display-font text-5xl sm:text-6xl md:text-7xl xl:text-[82px] font-medium leading-[1.04] tracking-tight text-[#0b1c2c]"
+          >
+            Building thoughtful{" "}
+            <span className="italic font-normal text-[#0e8f8b]">digital experiences</span>{" "}
+            &amp; scalable systems.
           </motion.h1>
 
-          {/* Bio + CTA — sits right below name, not at bottom */}
-          <div className="flex flex-col gap-7 max-w-[520px]">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-            >
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="text-white/60">
-                <line x1="7" y1="7" x2="17" y2="17" />
-                <polyline points="17 7 17 17 7 17" />
-              </svg>
-            </motion.div>
+          {/* Short Bio */}
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            className="text-[#44474c] text-lg md:text-xl leading-relaxed max-w-xl"
+          >
+            I architect and build robust, high-performance web applications using modern
+            full-stack technologies — currently an Analyst at{" "}
+            <span className="text-[#0b1c2c] font-semibold">KPMG India</span>,
+            available for select freelance projects and technical consulting worldwide.
+          </motion.p>
 
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
-              className="text-[#9ca3af] text-lg md:text-xl leading-[1.65]"
-            >
-              I build fast, scalable enterprise applications
-              using the MERN stack — currently an Analyst at{" "}
-              <span className="text-white font-medium">KPMG India</span>,
-              available for freelance projects worldwide.
-            </motion.p>
+          {/* CTAs & Social Links */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.45, duration: 0.5 }}
+            className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-2"
+          >
+            <div className="flex flex-wrap items-center gap-3">
+              <Link
+                href="#projects"
+                className="inline-flex items-center justify-center gap-2 bg-[#0e8f8b] text-white text-sm font-semibold tracking-wide px-7 py-3.5 rounded-full hover:bg-[#006a67] transition-all duration-200 shadow-sm"
+              >
+                View Projects
+                <ArrowUpRight size={16} />
+              </Link>
 
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.65, duration: 0.5 }}
-            >
               <Link
                 href="mailto:yashgtech00@gmail.com"
-                className="inline-flex items-center gap-2.5 bg-[#363636] text-white text-sm font-bold tracking-widest px-8 py-4 rounded-full hover:bg-orange-500 transition-all duration-300 group"
+                className="inline-flex items-center justify-center gap-2 border border-[#c4c6cc] text-[#0b1c2c] text-sm font-semibold tracking-wide px-7 py-3.5 rounded-full hover:border-[#0e8f8b] hover:text-[#0e8f8b] transition-all duration-200"
               >
-                CONTACT
-                <ArrowUpRight
-                  size={18}
-                  className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
-                />
+                Contact Me
               </Link>
-              <div className="mt-5 flex flex-wrap gap-4">
-                {socialLinks.map(({ icon: Icon, href, label }, index) => (
-                  <Link
-                    key={index}
-                    href={href}
-                    className="inline-flex items-center justify-center bg-[#363636] text-white w-12 h-12 rounded-full hover:bg-orange-500 transition-all duration-300"
-                  >
-                    <Icon size={18} />
-                  </Link>
-                ))}
-              </div>
-            </motion.div>
-          </div>
+            </div>
+
+            {/* Social icons */}
+            <div className="flex items-center gap-2.5 sm:ml-4 sm:border-l sm:border-[#c4c6cc] sm:pl-4">
+              {socialLinks.map(({ icon: Icon, href, label }) => (
+                <Link
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-[rgba(11,28,44,0.08)] bg-[#f6f3ed] text-[#0b1c2c] hover:text-[#0e8f8b] hover:border-[#0e8f8b] transition-colors"
+                >
+                  <Icon size={16} />
+                </Link>
+              ))}
+            </div>
+          </motion.div>
         </div>
 
-        {/* Right — photo centered */}
+        {/* Right Column (Editorial Photo & Frame) */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
-          className="flex items-center justify-center order-1 lg:order-2"
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.25, duration: 0.8, ease: "easeOut" }}
+          className="lg:col-span-5 flex items-center justify-center order-1 lg:order-2"
         >
-          <div className="relative w-full max-w-[340px] md:max-w-[500px] mx-auto">
-            {/* Decorations — behind person (lower z-index) */}
-            <div className="absolute inset-0 z-[1] pointer-events-none" aria-hidden="true">
-              <svg
-                className="absolute left-0 md:left-14 top-[12%] w-32 h-40 md:w-36 md:h-44 text-purple-500/55"
-                viewBox="0 0 120 150"
-                fill="none"
-              >
-                <path d="M8 120 V30 H78" stroke="currentColor" strokeWidth="2" />
-                <path d="M28 140 V50 H98 V140" stroke="currentColor" strokeWidth="2" />
-                <path d="M48 100 V70 H88" stroke="currentColor" strokeWidth="2" />
-              </svg>
-
-              <div className="absolute right-6 md:right-24 top-[34%] grid grid-cols-3 gap-2">
-                {Array.from({ length: 15 }).map((_, i) => (
-                  <span key={i} className="w-1.5 h-1.5 rounded-full bg-white/40" />
-                ))}
+          <div className="relative w-full max-w-[340px] sm:max-w-[380px] lg:max-w-[420px]">
+            {/* Subtle background decorative card */}
+            <div className="absolute -inset-3 bg-[#ebe8e2] rounded-[2rem] -rotate-2 -z-10 border border-[rgba(11,28,44,0.08)] opacity-60" />
+            
+            {/* Main Portrait Container */}
+            <div className="relative rounded-[1.75rem] overflow-hidden border border-[rgba(11,28,44,0.08)] bg-white shadow-[0_16px_40px_rgba(11,28,44,0.06)]">
+              <div className="relative h-[380px] sm:h-[420px] overflow-hidden bg-gradient-to-b from-[#f6f3ed] to-[#fcf9f3]">
+                <img
+                  src="/yash-nobg.png"
+                  alt="Yash Gupta"
+                  className="relative z-10 w-full h-[125%] object-cover object-top filter contrast-[1.02]"
+                  style={{
+                    maskImage: "linear-gradient(to bottom, black 80%, transparent 100%)",
+                    WebkitMaskImage: "linear-gradient(to bottom, black 80%, transparent 100%)",
+                  }}
+                />
               </div>
-            </div>
 
-            {/* Person — in front of decorations */}
-            <div className="relative z-[2] overflow-hidden h-[360px] md:h-[400px]">
-              <img
-                src="/yash-nobg.png"
-                alt="Yash Gupta"
-                className="relative z-[2] w-full h-[155%] object-cover object-top"
-                style={{
-                  maskImage: "linear-gradient(to bottom, black 72%, transparent 100%)",
-                  WebkitMaskImage: "linear-gradient(to bottom, black 72%, transparent 100%)",
-                }}
-              />
-              <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black via-black/80 to-transparent pointer-events-none z-[3]" />
-            </div>
-
-            {/* Status bar — on top */}
-            <div className="relative z-[4] -mt-1 border border-white/25 bg-black/90 px-4 py-3 flex items-center gap-3">
-              <span className="shrink-0 w-3 h-3 bg-orange-500" />
-              <p className="text-sm text-neutral-300 font-mono">
-                Currently working on{" "}
-                <span className="text-white font-semibold">Portfolio</span>
-              </p>
+              {/* Status Banner */}
+              <div className="glass-panel mx-3 mb-3 p-3 flex items-center gap-3 border border-[rgba(11,28,44,0.08)] bg-white/85 backdrop-blur-md">
+                <span className="relative flex h-2.5 w-2.5 shrink-0">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#0e8f8b] opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#0e8f8b]" />
+                </span>
+                <p className="text-xs text-[#44474c] font-mono">
+                  Currently building{" "}
+                  <span className="text-[#0b1c2c] font-semibold">Scalable Digital Products</span>
+                </p>
+              </div>
             </div>
           </div>
         </motion.div>
-      </div>
 
-      {/* Bottom fade */}
-      <div className="pointer-events-none absolute bottom-0 left-0 w-full h-20 bg-gradient-to-b from-transparent to-black z-30" />
+      </div>
     </motion.section>
   );
 };

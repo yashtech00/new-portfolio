@@ -5,48 +5,51 @@ import { motion } from "framer-motion";
 import { StaggerTestimonials } from "./ui/stagger-testimonials";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { ArrowUpRight } from "lucide-react";
 
 export default function AboutSection() {
-
   const [stats, setStats] = useState<any>(null);
 
-useEffect(() => {
-  fetch("/api/github")
-    .then((res) => res.json())
-    .then((data) => setStats(data));
-}, []);
+  useEffect(() => {
+    fetch("/api/github")
+      .then((res) => res.json())
+      .then((data) => setStats(data))
+      .catch(() => {});
+  }, []);
+
   return (
-    <div className="w-full flex flex-col text-white">
-      <div className="flex flex-col lg:flex-row items-start justify-evenly gap-10 px-6 pb-10">
+    <div className="flex flex-col text-[var(--on-surface)]">
+      <div className="flex flex-col lg:flex-row items-start justify-between gap-12 pb-14">
         
         {/* LEFT CONTENT */}
         <div className="flex flex-col text-left max-w-2xl">
           {/* Intro */}
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-neutral-400 mb-6"
+            className="text-[var(--on-surface-variant)] text-base md:text-lg leading-relaxed mb-6"
           >
-            🚀{" "}
-            <span className="text-white font-semibold">
-              Full-Stack Developer | Analyst
+            <span className="text-[var(--ink)] font-semibold">
+              Full-Stack Developer &amp; Analyst
             </span>{" "}
-            focused on building scalable, high-performance, and AI-driven
+            focused on engineering scalable, high-performance, and AI-driven
             solutions. I hold a B.Tech in Information Technology and specialize
             in developing systems that solve real-world business problems with
-            efficiency and precision.
-          </motion.p>
+            clean architecture, efficiency, and engineering precision.
+          </motion.div>
 
           {/* Experience */}
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-neutral-400 mb-6"
+            className="text-[var(--on-surface-variant)] text-base md:text-lg leading-relaxed mb-6"
           >
             I have hands-on experience designing and developing
-            AI-integrated applications, building microservices-based
+            AI-integrated platforms, building microservices-based
             architectures, and deploying containerized systems using Docker.
             My work spans across the full stack, leveraging technologies such as
             React.js, Next.js, Node.js, TypeScript, PostgreSQL, and modern
@@ -55,134 +58,154 @@ useEffect(() => {
           </motion.p>
 
           {/* Approach */}
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-neutral-400 mb-6"
+            className="text-[var(--on-surface-variant)] text-base md:text-lg leading-relaxed mb-6"
           >
-            <span className="text-white font-semibold">
-              My approach is simple:
-            </span>
-            <br />
-            I focus on building solutions that create measurable business impact
-            — not just features. I translate complex requirements into clean,
-            scalable, and maintainable systems.
-            <br />
-            I’m particularly interested in system design, scalable architectures,
-            product thinking, and performance optimization.
-          </motion.p>
+            <p className="text-[var(--ink)] font-semibold mb-1">
+              My engineering philosophy:
+            </p>
+            <p>
+              I focus on building solutions that create measurable business impact
+              — not just feature count. I translate complex requirements into clean,
+              scalable, and maintainable systems with a strong emphasis on system design,
+              performance optimization, and thoughtful user interaction.
+            </p>
+          </motion.div>
 
           {/* Core Strengths */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="mb-8"
+            className="mb-8 p-6 rounded-2xl bg-[var(--surface-container-lowest)] border border-[var(--glass-border)] shadow-xs"
+            style={{ backgroundColor: "#ffffff" }}
           >
-            <h4 className="text-lg font-semibold mb-3">💡 Core Strengths</h4>
+            <h4 className="text-sm uppercase tracking-wider font-mono font-bold text-[var(--teal-strong)] mb-4">
+              Core Capabilities
+            </h4>
 
-            <ul className="text-neutral-400 space-y-2">
-              <li>• Full-Stack Development (MERN / Next.js)</li>
-              <li>• API Design & Backend Architecture</li>
-              <li>• Microservices & Containerization (Docker)</li>
-              <li>• AI-Driven Application Development</li>
-              <li>• Database Design & Query Optimization</li>
+            <ul className="text-[var(--on-surface-variant)] space-y-2.5 text-sm md:text-base">
+              <li className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[var(--teal)]" />
+                Full-Stack Architecture (MERN / Next.js / TypeScript)
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[var(--teal)]" />
+                API Design &amp; Scalable Backend Engineering
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[var(--teal)]" />
+                Microservices &amp; Containerization (Docker)
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[var(--teal)]" />
+                AI-Driven Application &amp; LLM Workflow Development
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[var(--teal)]" />
+                Database Design &amp; Query Optimization
+              </li>
             </ul>
           </motion.div>
 
-          {/* Tech Stack */}
-          {/* <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-wrap gap-4 mb-10"
-          >
-            {[
-              "JavaScript",
-              "React",
-              "Next.js",
-              "Node.js",
-              "MongoDB",
-              "Express",
-              "TypeScript",
-              "AI Systems",
-            ].map((tech, i) => (
-              <span
-                key={i}
-                className="px-4 py-2 text-sm bg-neutral-900 border border-neutral-800 rounded-lg hover:border-purple-500 transition"
-              >
-                {tech}
-              </span>
-            ))}
-          </motion.div> */}
-
           {/* Closing */}
-          <p className="text-neutral-400">
-            I’m open to collaborating on impactful projects and discussing ideas
-            around technology, product development, and scalable systems.
-            <br />
+          <div className="text-[var(--on-surface-variant)] text-base">
+            <p>
+              Open to collaborating on high-impact projects, product architecture,
+              and engineering leadership.
+            </p>
             <Link
               href="https://www.linkedin.com/in/yash00tech/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-black bg-white font-medium px-4 py-2 my-4 rounded-lg inline-block hover:bg-neutral-200 transition"
+              className="inline-flex items-center gap-2 bg-[var(--teal)] text-white font-medium px-6 py-3 my-4 rounded-full hover:bg-[var(--teal-strong)] transition-all shadow-sm"
             >
-              Let’s connect.
+              Let&apos;s connect on LinkedIn
+              <ArrowUpRight size={16} />
             </Link>
-          </p>
+          </div>
         </div>
 
-        {/* RIGHT SIDE (Images Carousel) */}
-        <div className="flex w-full lg:w-[40%] justify-center items-center">
+        {/* RIGHT SIDE (Visual Carousel) */}
+        <div className="flex w-full lg:w-[45%] justify-center items-center">
           <StaggerTestimonials />
         </div>
       </div>
 
-      {/* STATS */}
-      <div className="flex flex-col items-center px-6 pb-16">
-  <motion.div
-    initial={{ opacity: 0, y: 40 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6 }}
-    className="grid grid-cols-3 gap-6 mb-14"
-  >
-    <div className="bg-neutral-900 border border-neutral-800 rounded-xl px-6 py-4 hover:border-purple-500 transition">
-      <p className="text-2xl font-bold">
-        {stats ? `${stats.repos}+` : "--"}
-      </p>
-      <p className="text-neutral-400 text-sm">Repositories</p>
-    </div>
+      {/* STATS & GITHUB CALENDAR */}
+      <div className="flex flex-col items-center pb-20">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12 w-full"
+        >
+          <div
+            className="bg-[var(--surface-container-lowest)] border border-[var(--glass-border)] rounded-2xl p-6 hover:border-[var(--teal)] transition-colors shadow-xs"
+            style={{ backgroundColor: "#ffffff" }}
+          >
+            <p className="display-font text-4xl font-bold text-[var(--ink)]">
+              {stats ? `${stats.repos}+` : "25+"}
+            </p>
+            <p className="text-[var(--on-surface-variant)] text-xs font-mono uppercase tracking-wider mt-1">
+              Repositories
+            </p>
+          </div>
 
-    <div className="bg-neutral-900 border border-neutral-800 rounded-xl px-6 py-4 hover:border-purple-500 transition">
-      <p className="text-2xl font-bold">
-        {stats ? `${stats.followers}+` : "--"}
-      </p>
-      <p className="text-neutral-400 text-sm">Followers</p>
-    </div>
+          <div
+            className="bg-[var(--surface-container-lowest)] border border-[var(--glass-border)] rounded-2xl p-6 hover:border-[var(--teal)] transition-colors shadow-xs"
+            style={{ backgroundColor: "#ffffff" }}
+          >
+            <p className="display-font text-4xl font-bold text-[var(--ink)]">
+              {stats ? `${stats.followers}+` : "50+"}
+            </p>
+            <p className="text-[var(--on-surface-variant)] text-xs font-mono uppercase tracking-wider mt-1">
+              Followers
+            </p>
+          </div>
 
-    <div className="bg-neutral-900 border border-neutral-800 rounded-xl px-6 py-4 hover:border-purple-500 transition">
-      <p className="text-2xl font-bold">3+</p>
-      <p className="text-neutral-400 text-sm">Years Coding</p>
-    </div>
-  </motion.div>
-  <motion.div
-  initial={{ opacity: 0, scale: 0.95 }}
-  whileInView={{ opacity: 1, scale: 1 }}
-  transition={{ duration: 0.6 }}
-  className="bg-neutral-900 border border-neutral-800 rounded-xl p-6 w-full max-w-4xl"
->
-  <h3 className="text-xl font-semibold mb-6 text-center">
-    GitHub Contribution Activity
-  </h3>
+          <div
+            className="bg-[var(--surface-container-lowest)] border border-[var(--glass-border)] rounded-2xl p-6 hover:border-[var(--teal)] transition-colors shadow-xs"
+            style={{ backgroundColor: "#ffffff" }}
+          >
+            <p className="display-font text-4xl font-bold text-[var(--ink)]">3+</p>
+            <p className="text-[var(--on-surface-variant)] text-xs font-mono uppercase tracking-wider mt-1">
+              Years Engineering
+            </p>
+          </div>
+        </motion.div>
 
-  <GitHubCalendar
-    username="yashtech00"
-    blockSize={14}
-    blockMargin={5}
-    fontSize={14}
-  />
-</motion.div>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.98 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="bg-[var(--surface-container-lowest)] border border-[var(--glass-border)] rounded-2xl p-6 md:p-8 w-full shadow-xs overflow-x-auto"
+          style={{ backgroundColor: "#ffffff" }}
+        >
+          <h3 className="text-base font-semibold text-[var(--ink)] mb-6 text-center font-mono">
+            GitHub Contribution Activity
+          </h3>
+
+          <div className="flex justify-center overflow-x-auto">
+            <GitHubCalendar
+              username="yashtech00"
+              blockSize={13}
+              blockMargin={4}
+              fontSize={13}
+              colorScheme="light"
+              theme={{
+                light: ["#ebe8e2", "#8cf4ee", "#20b2aa", "#0e8f8b", "#006a67"],
+              }}
+            />
+          </div>
+        </motion.div>
       </div>
     </div>
   );

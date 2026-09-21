@@ -14,35 +14,47 @@ import { StackSection } from "@/components/stack-section";
 
 export default function Home() {
   const [showIntro, setShowIntro] = useState(true);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowIntro(false);
-    }, 3500);
+    }, 2400);
     return () => clearTimeout(timer);
   }, []);
+
   return (
-    <div className="w-full bg-black">
+    <div
+      className="w-full bg-[#fcf9f3] text-[#1c1c18]"
+      style={{ backgroundColor: "#fcf9f3", color: "#1c1c18" }}
+    >
       <AnimatePresence mode="wait">
         {showIntro ? (
           <motion.div
             key="intro"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0, scale: 1.05 }}
-            transition={{ duration: 0.8 }}
-            className="flex items-center justify-center min-h-screen bg-black"
+            exit={{ opacity: 0, scale: 1.02 }}
+            transition={{ duration: 0.5 }}
+            className="flex flex-col items-center justify-center min-h-screen px-6"
+            style={{ backgroundColor: "#fcf9f3" }}
           >
+            <span className="label-eyebrow mb-6 text-xs tracking-widest text-[#0e8f8b]">
+              YASH GUPTA · PORTFOLIO
+            </span>
             <GooeyText
-              texts={["Design", "Engineering", "AI", "Web3"]}
-              morphTime={1}
+              texts={["Engineering", "Architecture", "Performance", "Full-Stack"]}
+              morphTime={0.9}
               cooldownTime={0.25}
-              className="font-bold text-5xl md:text-7xl bg-black"
+              className="font-semibold text-5xl md:text-7xl text-[#0b1c2c]"
             />
           </motion.div>
         ) : (
-          <main className="relative bg-black">
-            {/* HERO: pinned behind everything */}
-            <section className="sticky top-0 z-10 h-screen w-full overflow-hidden bg-black">
+          <main className="relative bg-[#fcf9f3]" style={{ backgroundColor: "#fcf9f3" }}>
+            {/* HERO */}
+            <section
+              className="relative min-h-screen w-full bg-[#fcf9f3]"
+              style={{ backgroundColor: "#fcf9f3" }}
+            >
               <Navbar />
               <HeroSection />
             </section>
@@ -51,8 +63,8 @@ export default function Home() {
               id="services"
               zIndex={20}
               title="WHAT I DO /"
-              label="(SERVICES)"
-              description="I specialize in building fast, reliable, and user-friendly full-stack web applications. I help small businesses and startups turn ideas into high-quality websites and products that actually work and scale."
+              label="(CAPABILITIES & SERVICES)"
+              description="I specialize in building fast, reliable, and user-friendly full-stack web applications. I help businesses and teams turn technical requirements into high-quality digital platforms that perform and scale."
             >
               <WhatIDo />
             </StackSection>
@@ -61,8 +73,8 @@ export default function Home() {
               id="projects"
               zIndex={30}
               title="SELECTED WORKS /"
-              label="(PROJECTS)"
-              description="Those late-night builds — real products shipped with clean architecture, thoughtful UX, and production-ready code."
+              label="(FEATURED PROJECTS)"
+              description="Real products shipped with clean architecture, thoughtful UX, and production-ready code — from enterprise systems to experimental tools."
             >
               <Projects />
             </StackSection>
@@ -71,7 +83,7 @@ export default function Home() {
               id="about"
               zIndex={40}
               title="ABOUT ME /"
-              label="(INTRO)"
+              label="(BACKGROUND & METRICS)"
               description="Full-Stack Developer & Analyst focused on building scalable, high-performance, and AI-driven solutions that solve real-world business problems."
             >
               <AboutSection />
@@ -81,8 +93,8 @@ export default function Home() {
               id="timeline"
               zIndex={50}
               title="MY JOURNEY /"
-              label="(EXPERIENCE)"
-              description="From learning fundamentals to delivering enterprise solutions — a journey of growth, impact, and continuous building."
+              label="(EXPERIENCE & EDUCATION)"
+              description="From learning computer science fundamentals to delivering enterprise digital solutions — a timeline of growth, impact, and continuous engineering."
             >
               <ScrollTimeline />
             </StackSection>
@@ -91,12 +103,13 @@ export default function Home() {
               id="contact"
               zIndex={60}
               title="LET'S CONNECT /"
-              label="(CONTACT)"
-              description="Whether it's a project, idea, or collaboration — I'm always open to meaningful conversations and building something amazing together."
+              label="(GET IN TOUCH)"
+              description="Whether it's a project, consulting inquiry, or technical collaboration — I'm always open to meaningful conversations and building something impactful together."
             >
               <ConnectWithMe />
-              <Footer />
             </StackSection>
+
+            <Footer />
           </main>
         )}
       </AnimatePresence>
