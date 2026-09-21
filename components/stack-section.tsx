@@ -19,13 +19,11 @@ export function StackSection({
   return (
     <section
       id={id}
-      className="relative w-full border-t border-[rgba(11,28,44,0.08)] bg-[#fcf9f3]"
-      style={{ backgroundColor: "#fcf9f3" }}
+      className="relative w-full border-t border-[rgba(11,28,44,0.08)] bg-[#fcf9f3]/80 backdrop-blur-[0.5px]"
     >
       {/* Sticky Large Section Heading ONLY */}
       <div
-        className="sticky top-0 z-20 w-full bg-[#fcf9f3] py-4 sm:py-6 border-b border-[rgba(11,28,44,0.06)]"
-        style={{ backgroundColor: "#fcf9f3" }}
+        className="sticky top-0 z-20 w-full bg-[#fcf9f3]/95 backdrop-blur-md py-4 sm:py-6 border-b border-[rgba(11,28,44,0.06)]"
       >
         <div className="container-page">
           <h2 className="display-font text-[#0b1c2c] font-semibold text-3xl sm:text-5xl md:text-7xl lg:text-8xl tracking-tight leading-none select-none">

@@ -17,8 +17,8 @@ export const HeroSection = () => {
 
   return (
     <motion.section
-      style={{ scale, opacity, backgroundColor: "#fcf9f3" }}
-      className="relative min-h-[calc(100dvh-68px)] flex items-center overflow-hidden py-12 lg:py-0 bg-[#fcf9f3] text-[#1c1c18]"
+      style={{ scale, opacity }}
+      className="relative min-h-[calc(100dvh-68px)] flex items-center overflow-hidden py-12 lg:py-0 bg-transparent text-[#1c1c18]"
     >
       {/* Subtle Teal Ambient Glow (Editorial & Soft) */}
       <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">

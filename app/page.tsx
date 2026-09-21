@@ -11,6 +11,7 @@ import ScrollTimeline from "@/components/timeline-feature";
 import AboutSection from "@/components/about-section";
 import { WhatIDo } from "@/components/what-i-do";
 import { StackSection } from "@/components/stack-section";
+import { HalftoneFlow } from "@/components/ui/halftone-flow";
 
 export default function Home() {
   const [showIntro, setShowIntro] = useState(true);
@@ -49,15 +50,21 @@ export default function Home() {
             />
           </motion.div>
         ) : (
-          <main className="relative bg-[#fcf9f3]" style={{ backgroundColor: "#fcf9f3" }}>
-            {/* HERO */}
-            <section
-              className="relative min-h-screen w-full bg-[#fcf9f3]"
-              style={{ backgroundColor: "#fcf9f3" }}
+          <div className="relative w-full">
+            {/* Subtle Halftone Flow WebGL Background Layer */}
+            <div
+              className="fixed inset-0 pointer-events-none z-0 overflow-hidden"
+              aria-hidden="true"
             >
-              <Navbar />
-              <HeroSection />
-            </section>
+              <HalftoneFlow className="w-full h-full" opacity={0.9} />
+            </div>
+
+            <main className="relative z-10 bg-transparent">
+              {/* HERO */}
+              <section className="relative min-h-screen w-full bg-transparent">
+                <Navbar />
+                <HeroSection />
+              </section>
 
             <StackSection
               id="services"
@@ -111,7 +118,8 @@ export default function Home() {
 
             <Footer />
           </main>
-        )}
+        </div>
+      )}
       </AnimatePresence>
     </div>
   );
