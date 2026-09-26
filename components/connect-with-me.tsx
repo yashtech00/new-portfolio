@@ -17,8 +17,7 @@ export const ConnectWithMe = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative rounded-[2rem] bg-[var(--ink)] text-[var(--surface)] overflow-hidden p-8 sm:p-12 lg:p-16 border border-[var(--ink)] shadow-[0_24px_50px_rgba(11,28,44,0.12)]"
-          style={{ backgroundColor: "#0b1c2c", color: "#fcf9f3" }}
+          className="relative rounded-[2rem] bg-[#0b1c2c] dark:bg-[var(--surface-container-lowest)] text-[#fcf9f3] dark:text-[var(--on-surface)] overflow-hidden p-8 sm:p-12 lg:p-16 border border-[#0b1c2c] dark:border-[var(--glass-border)] shadow-[0_24px_50px_rgba(0,0,0,0.12)]"
         >
           {/* Subtle Ambient Radial Highlights */}
           <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[radial-gradient(circle,rgba(14,143,139,0.18)_0%,transparent_70%)] pointer-events-none" />

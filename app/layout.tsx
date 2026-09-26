@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Newsreader } from "next/font/google";
 import "./globals.css";
 
+import { ThemeProvider } from "@/components/theme-provider";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -32,14 +34,20 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className="scroll-smooth bg-[#fcf9f3]"
-      style={{ backgroundColor: "#fcf9f3", color: "#1c1c18" }}
+      suppressHydrationWarning
+      className="scroll-smooth"
     >
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${newsreader.variable} antialiased selection:bg-[#0e8f8b]/20 bg-[#fcf9f3] text-[#1c1c18] min-h-screen`}
-        style={{ backgroundColor: "#fcf9f3", color: "#1c1c18" }}
+        className={`${geistSans.variable} ${geistMono.variable} ${newsreader.variable} antialiased selection:bg-[var(--teal)]/20 bg-[var(--surface)] text-[var(--on-surface)] min-h-screen transition-colors duration-300`}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange={false}
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

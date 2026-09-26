@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --surface: #fcf9f3;
   --surface-dim: #dcdad4;
@@ -11,22 +13,58 @@
   --surface-container-highest: #e5e2dc;
 
   --on-surface: #1c1c18;
-  --on-surface-variant: #44474c;
+  --on-surface-variant: #647078;
 
   --outline: #74777d;
-  --outline-variant: #c4c6cc;
+  --outline-variant: #e1e5eb;
 
   --ink: #0b1c2c;
   --paper: #f3f0ea;
 
-  --teal: #0e8f8b;
+  --teal: #128784;
   --teal-strong: #006a67;
   --secondary-container: #8cf4ee;
 
   --glass-border: rgba(11, 28, 44, 0.08);
   --grid-line: rgba(11, 28, 44, 0.04);
+  --ambient-glow-1: rgba(18, 135, 132, 0.1);
+  --ambient-glow-2: rgba(11, 28, 44, 0.07);
 
   --error: #ba1a1a;
+
+  --background: var(--surface);
+  --foreground: var(--on-surface);
+}
+
+.dark {
+  --surface: #0d151d;
+  --surface-dim: #090e14;
+  --surface-bright: #131d27;
+  --surface-container-lowest: #17232d;
+  --surface-container-low: #111a22;
+  --surface-container: #1b2834;
+  --surface-container-high: #21303e;
+  --surface-container-highest: #283a4a;
+
+  --on-surface: #f1f5f4;
+  --on-surface-variant: #a5b2bb;
+
+  --outline: #5c6c79;
+  --outline-variant: #30404b;
+
+  --ink: #f1f5f4;
+  --paper: #121c25;
+
+  --teal: #48c8bb;
+  --teal-strong: #38b2a6;
+  --secondary-container: #1b4b47;
+
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --grid-line: rgba(255, 255, 255, 0.04);
+  --ambient-glow-1: rgba(72, 200, 187, 0.12);
+  --ambient-glow-2: rgba(23, 35, 45, 0.4);
+
+  --error: #ffb4ab;
 
   --background: var(--surface);
   --foreground: var(--on-surface);
@@ -75,12 +113,12 @@ body {
   background-image:
     radial-gradient(
       900px 480px at 8% -5%,
-      rgba(14, 143, 139, 0.1),
+      var(--ambient-glow-1),
       transparent 55%
     ),
     radial-gradient(
       700px 420px at 92% 0%,
-      rgba(11, 28, 44, 0.07),
+      var(--ambient-glow-2),
       transparent 50%
     ),
     linear-gradient(
@@ -100,6 +138,7 @@ body {
     32px 32px;
 
   background-attachment: fixed;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .app-shell {
@@ -120,7 +159,7 @@ body {
 }
 
 .glass-panel {
-  background: rgba(255, 252, 247, 0.72);
+  background: var(--surface-container-lowest);
   border: 1px solid var(--glass-border);
 
   backdrop-filter: blur(12px);

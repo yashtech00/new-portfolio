@@ -8,6 +8,8 @@ import { Top3Selector } from "@/components/admin/top3-selector";
 import type { Project } from "@/lib/types/project";
 import Link from "next/link";
 
+import { ThemeToggle } from "@/components/theme-toggle";
+
 export default function AdminPageClient() {
   const [authenticated, setAuthenticated] = useState<boolean | null>(null);
   const [projects, setProjects] = useState<Project[]>([]);
@@ -64,14 +66,17 @@ export default function AdminPageClient() {
 
   if (!authenticated) {
     return (
-      <div className="min-h-screen bg-[var(--surface)] flex items-center justify-center px-6">
+      <div className="min-h-screen bg-[var(--surface)] flex flex-col items-center justify-center px-6 relative">
+        <div className="absolute top-6 right-6">
+          <ThemeToggle />
+        </div>
         <LoginForm onSuccess={() => setAuthenticated(true)} />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[var(--surface)] text-[var(--on-surface)] px-6 md:px-12 py-10">
+    <div className="min-h-screen bg-[var(--surface)] text-[var(--on-surface)] px-6 md:px-12 py-10 transition-colors duration-300">
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center justify-between mb-8 pb-6 border-b border-[var(--glass-border)]">
           <div>
@@ -83,12 +88,15 @@ export default function AdminPageClient() {
             <h1 className="display-font text-3xl font-bold text-[var(--ink)] mt-1">Project Admin</h1>
             <p className="text-[var(--on-surface-variant)] text-sm mt-0.5">Manage portfolio projects &amp; case studies</p>
           </div>
-          <button
-            onClick={handleLogout}
-            className="text-sm font-medium text-[var(--ink)] hover:text-[var(--teal)] border border-[var(--outline-variant)] bg-[var(--surface-container-lowest)] px-4 py-2 rounded-full transition-colors"
-          >
-            Logout
-          </button>
+          <div className="flex items-center gap-3">
+            <ThemeToggle />
+            <button
+              onClick={handleLogout}
+              className="text-sm font-medium text-[var(--ink)] hover:text-[var(--teal)] border border-[var(--outline-variant)] bg-[var(--surface-container-lowest)] px-4 py-2 rounded-full transition-colors"
+            >
+              Logout
+            </button>
+          </div>
         </div>
 
         <div className="mb-8">

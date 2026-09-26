@@ -130,14 +130,13 @@ function TimelineCard({ item }: { item: any }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className="w-full rounded-2xl bg-[var(--surface-container-lowest)] border border-[var(--glass-border)] p-6 md:p-7 shadow-xs hover:border-[var(--teal)] hover:shadow-[0_12px_32px_rgba(11,28,44,0.05)] transition-all"
-      style={{ backgroundColor: "#ffffff" }}
+      className="w-full rounded-2xl bg-[var(--surface-container-lowest)] border border-[var(--glass-border)] p-6 md:p-7 shadow-xs hover:border-[var(--teal)] hover:shadow-[0_12px_32px_rgba(0,0,0,0.06)] transition-all"
     >
       <div className="flex flex-col gap-1 mb-4">
         <h3 className="display-font text-xl md:text-2xl font-semibold text-[var(--ink)] leading-snug">
           {item.title}
         </h3>
-        <p className="text-[var(--teal-strong)] text-sm font-semibold tracking-wide">
+        <p className="text-[var(--teal-strong)] dark:text-[var(--teal)] text-sm font-semibold tracking-wide">
           {item.company}
         </p>
         <p className="text-[var(--on-surface-variant)] text-xs font-mono">
@@ -169,7 +168,6 @@ function TimelineImage({ item }: { item: any }) {
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
       className="w-full rounded-2xl overflow-hidden border border-[var(--glass-border)] bg-[var(--surface-container-low)] shadow-xs group"
-      style={{ backgroundColor: "#f6f3ed" }}
     >
       <img
         src={item.image}
@@ -178,7 +176,6 @@ function TimelineImage({ item }: { item: any }) {
       />
       <div
         className="px-4 py-2.5 bg-[var(--surface-container-lowest)] border-t border-[var(--glass-border)]"
-        style={{ backgroundColor: "#ffffff" }}
       >
         <p className="text-xs text-[var(--on-surface-variant)] font-mono truncate font-medium">
           {item.company}

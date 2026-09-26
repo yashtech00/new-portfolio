@@ -13,10 +13,15 @@ import { WhatIDo } from "@/components/what-i-do";
 import { StackSection } from "@/components/stack-section";
 import { HalftoneFlow } from "@/components/ui/halftone-flow";
 
+import { useTheme } from "next-themes";
+
 export default function Home() {
   const [showIntro, setShowIntro] = useState(true);
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const timer = setTimeout(() => {
       setShowIntro(false);
     }, 2400);
@@ -24,10 +29,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div
-      className="w-full bg-[#fcf9f3] text-[#1c1c18]"
-      style={{ backgroundColor: "#fcf9f3", color: "#1c1c18" }}
-    >
+    <div className="w-full bg-[var(--surface)] text-[var(--on-surface)] min-h-screen transition-colors duration-300">
       <AnimatePresence mode="wait">
         {showIntro ? (
           <motion.div
@@ -36,17 +38,16 @@ export default function Home() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, scale: 1.02 }}
             transition={{ duration: 0.5 }}
-            className="flex flex-col items-center justify-center min-h-screen px-6"
-            style={{ backgroundColor: "#fcf9f3" }}
+            className="flex flex-col items-center justify-center min-h-screen px-6 bg-[var(--surface)]"
           >
-            <span className="label-eyebrow mb-6 text-xs tracking-widest text-[#0e8f8b]">
+            <span className="label-eyebrow mb-6 text-xs tracking-widest text-[var(--teal)]">
               YASH GUPTA · PORTFOLIO
             </span>
             <GooeyText
               texts={["Engineering", "Architecture", "Performance", "Full-Stack"]}
               morphTime={0.9}
               cooldownTime={0.25}
-              className="font-semibold text-5xl md:text-7xl text-[#0b1c2c]"
+              className="font-semibold text-5xl md:text-7xl text-[var(--ink)]"
             />
           </motion.div>
         ) : (
@@ -56,7 +57,11 @@ export default function Home() {
               className="fixed inset-0 pointer-events-none z-0 overflow-hidden"
               aria-hidden="true"
             >
-              <HalftoneFlow className="w-full h-full" opacity={0.9} />
+              <HalftoneFlow
+                className="w-full h-full"
+                opacity={0.9}
+                mode={mounted && resolvedTheme === "dark" ? "dark" : "light"}
+              />
             </div>
 
             <main className="relative z-10 bg-transparent">

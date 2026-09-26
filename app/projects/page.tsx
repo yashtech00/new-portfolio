@@ -45,15 +45,14 @@ export default function AllProjectsPage() {
 
   return (
     <div
-      className="bg-[var(--surface)] text-[var(--on-surface)] min-h-screen"
-      style={{ backgroundColor: "#fcf9f3", color: "#1c1c18" }}
+      className="bg-[var(--surface)] text-[var(--on-surface)] min-h-screen transition-colors duration-300"
     >
       <Navbar />
       <div className="container-page py-5">
         <div className="mb-16">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-sm font-medium text-[var(--on-surface-variant)] hover:text-[var(--teal-strong)] transition-colors mb-6"
+            className="inline-flex items-center gap-2 text-sm font-medium text-[var(--on-surface-variant)] hover:text-[var(--teal)] transition-colors mb-6"
           >
             ← Back to Home
           </Link>

@@ -38,8 +38,7 @@ function Footer() {
 
   return (
     <footer
-      className="relative w-full overflow-hidden bg-[var(--surface-container-low)] border-t border-[var(--glass-border)] pt-14 pb-8"
-      style={{ backgroundColor: "#f6f3ed" }}
+      className="relative w-full overflow-hidden bg-[var(--surface-container-low)] border-t border-[var(--glass-border)] pt-14 pb-8 transition-colors duration-300"
     >
       <div className="container-page relative z-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 mb-10">

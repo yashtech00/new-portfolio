@@ -7,10 +7,15 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { ArrowUpRight } from "lucide-react";
 
+import { useTheme } from "next-themes";
+
 export default function AboutSection() {
   const [stats, setStats] = useState<any>(null);
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     fetch("/api/github")
       .then((res) => res.json())
       .then((data) => setStats(data))
@@ -83,9 +88,8 @@ export default function AboutSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
             className="mb-8 p-6 rounded-2xl bg-[var(--surface-container-lowest)] border border-[var(--glass-border)] shadow-xs"
-            style={{ backgroundColor: "#ffffff" }}
           >
-            <h4 className="text-sm uppercase tracking-wider font-mono font-bold text-[var(--teal-strong)] mb-4">
+            <h4 className="text-sm uppercase tracking-wider font-mono font-bold text-[var(--teal-strong)] dark:text-[var(--teal)] mb-4">
               Core Capabilities
             </h4>
 
@@ -148,7 +152,6 @@ export default function AboutSection() {
         >
           <div
             className="bg-[var(--surface-container-lowest)] border border-[var(--glass-border)] rounded-2xl p-6 hover:border-[var(--teal)] transition-colors shadow-xs"
-            style={{ backgroundColor: "#ffffff" }}
           >
             <p className="display-font text-4xl font-bold text-[var(--ink)]">
               {stats ? `${stats.repos}+` : "25+"}
@@ -160,7 +163,6 @@ export default function AboutSection() {
 
           <div
             className="bg-[var(--surface-container-lowest)] border border-[var(--glass-border)] rounded-2xl p-6 hover:border-[var(--teal)] transition-colors shadow-xs"
-            style={{ backgroundColor: "#ffffff" }}
           >
             <p className="display-font text-4xl font-bold text-[var(--ink)]">
               {stats ? `${stats.followers}+` : "50+"}
@@ -172,7 +174,6 @@ export default function AboutSection() {
 
           <div
             className="bg-[var(--surface-container-lowest)] border border-[var(--glass-border)] rounded-2xl p-6 hover:border-[var(--teal)] transition-colors shadow-xs"
-            style={{ backgroundColor: "#ffffff" }}
           >
             <p className="display-font text-4xl font-bold text-[var(--ink)]">3+</p>
             <p className="text-[var(--on-surface-variant)] text-xs font-mono uppercase tracking-wider mt-1">
@@ -187,7 +188,6 @@ export default function AboutSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           className="bg-[var(--surface-container-lowest)] border border-[var(--glass-border)] rounded-2xl p-6 md:p-8 w-full shadow-xs overflow-x-auto"
-          style={{ backgroundColor: "#ffffff" }}
         >
           <h3 className="text-base font-semibold text-[var(--ink)] mb-6 text-center font-mono">
             GitHub Contribution Activity
@@ -199,9 +199,10 @@ export default function AboutSection() {
               blockSize={13}
               blockMargin={4}
               fontSize={13}
-              colorScheme="light"
+              colorScheme={mounted && resolvedTheme === "dark" ? "dark" : "light"}
               theme={{
                 light: ["#ebe8e2", "#8cf4ee", "#20b2aa", "#0e8f8b", "#006a67"],
+                dark: ["#1c2833", "#0e6b66", "#14958f", "#26c4ba", "#5eead4"],
               }}
             />
           </div>

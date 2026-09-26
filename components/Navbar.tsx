@@ -3,6 +3,8 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
+import { ThemeToggle } from '@/components/theme-toggle';
+
 const navLinks = [
   { label: 'Services', href: '#services' },
   { label: 'Works', href: '#projects' },
@@ -26,7 +28,7 @@ export const Navbar = () => {
     <header
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${
         scrolled
-          ? 'bg-[rgba(252,249,243,0.85)] backdrop-blur-md border-b border-[var(--glass-border)] shadow-[0_4px_20px_rgba(11,28,44,0.03)]'
+          ? 'bg-[var(--surface)]/90 backdrop-blur-md border-b border-[var(--glass-border)] shadow-[0_4px_20px_rgba(0,0,0,0.03)]'
           : 'bg-transparent border-b border-transparent'
       }`}
     >
@@ -34,7 +36,7 @@ export const Navbar = () => {
         {/* Left: Role tagline / Name */}
         <Link
           href="/"
-          className="group flex items-center gap-3 text-sm font-semibold tracking-tight text-[var(--ink)]"
+          className="group flex items-center gap-3 text-sm font-semibold tracking-tight text-[var(--ink)] shrink-0"
         >
           <span className="w-2.5 h-2.5 rounded-full bg-[var(--teal)] transition-transform group-hover:scale-125" />
           <span className="tracking-wide">YASH GUPTA</span>
@@ -43,18 +45,22 @@ export const Navbar = () => {
           </span>
         </Link>
 
-        {/* Right: Nav links */}
-        <nav className="flex items-center gap-3 sm:gap-6 md:gap-8 overflow-x-auto py-1">
-          {navLinks.map(({ label, href }) => (
-            <Link
-              key={label}
-              href={href}
-              className="text-xs sm:text-sm font-medium tracking-wide text-[var(--on-surface-variant)] hover:text-[var(--teal-strong)] transition-colors duration-200 whitespace-nowrap"
-            >
-              {label}
-            </Link>
-          ))}
-        </nav>
+        {/* Right: Nav links & Theme Toggle */}
+        <div className="flex items-center gap-2 sm:gap-4 md:gap-6">
+          <nav className="flex items-center gap-2.5 sm:gap-5 md:gap-7 overflow-x-auto py-1">
+            {navLinks.map(({ label, href }) => (
+              <Link
+                key={label}
+                href={href}
+                className="text-xs sm:text-sm font-medium tracking-wide text-[var(--on-surface-variant)] hover:text-[var(--teal)] transition-colors duration-200 whitespace-nowrap"
+              >
+                {label}
+              </Link>
+            ))}
+          </nav>
+          <div className="h-4 w-px bg-[var(--outline-variant)]/60 hidden sm:block shrink-0" />
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   );

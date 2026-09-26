@@ -38,28 +38,26 @@ const services = [
 
 export const WhatIDo = () => {
   return (
-    <div className="flex flex-col gap-8 md:gap-10 text-[#1c1c18]">
+    <div className="flex flex-col gap-8 md:gap-10 text-[var(--on-surface)]">
       {services.map((service) => (
         <div
           key={service.id}
-          className="w-full bg-white rounded-3xl border border-[rgba(11,28,44,0.08)] shadow-[0_12px_40px_rgba(11,28,44,0.05)] overflow-hidden transition-all duration-300 hover:border-[#0e8f8b]/40 hover:shadow-[0_16px_40px_rgba(11,28,44,0.06)]"
-          style={{ backgroundColor: "#ffffff" }}
+          className="w-full bg-[var(--surface-container-lowest)] rounded-3xl border border-[var(--glass-border)] shadow-[0_12px_40px_rgba(0,0,0,0.05)] overflow-hidden transition-all duration-300 hover:border-[var(--teal)]/40 hover:shadow-[0_16px_40px_rgba(0,0,0,0.08)]"
         >
           <div
-            className="flex items-center justify-between gap-6 px-6 md:px-12 py-6 border-b border-[rgba(11,28,44,0.08)] bg-[#f6f3ed]"
-            style={{ backgroundColor: "#f6f3ed" }}
+            className="flex items-center justify-between gap-6 px-6 md:px-12 py-6 border-b border-[var(--glass-border)] bg-[var(--surface-container-low)]"
           >
-            <span className="text-[#0e8f8b] font-mono font-bold text-xl md:text-2xl shrink-0">
+            <span className="text-[var(--teal)] font-mono font-bold text-xl md:text-2xl shrink-0">
               ({service.id})
             </span>
-            <h3 className="display-font min-w-0 text-xl md:text-3xl lg:text-4xl font-semibold tracking-tight text-[#0b1c2c] text-right md:text-left">
+            <h3 className="display-font min-w-0 text-xl md:text-3xl lg:text-4xl font-semibold tracking-tight text-[var(--ink)] text-right md:text-left">
               {service.title}
             </h3>
           </div>
 
-          <div className="flex justify-end px-6 md:px-12 py-8 md:py-12 bg-white" style={{ backgroundColor: "#ffffff" }}>
+          <div className="flex justify-end px-6 md:px-12 py-8 md:py-12 bg-[var(--surface-container-lowest)]">
             <div className="flex flex-col gap-8 md:w-2/4 w-full">
-              <p className="text-[#44474c] text-base md:text-lg lg:text-xl leading-relaxed max-w-xl">
+              <p className="text-[var(--on-surface-variant)] text-base md:text-lg lg:text-xl leading-relaxed max-w-xl">
                 {service.description}
               </p>
 
@@ -67,14 +65,14 @@ export const WhatIDo = () => {
                 {service.skills.map((skill, i) => (
                   <div key={i}>
                     <div className="flex items-center gap-4 py-3.5">
-                      <span className="text-xs text-[#0e8f8b] font-mono font-semibold shrink-0">
+                      <span className="text-xs text-[var(--teal)] font-mono font-semibold shrink-0">
                         0{i + 1}
                       </span>
-                      <p className="text-base md:text-lg font-medium text-[#0b1c2c]">
+                      <p className="text-base md:text-lg font-medium text-[var(--ink)]">
                         {skill}
                       </p>
                     </div>
-                    <div className="h-px bg-[rgba(11,28,44,0.08)]" />
+                    <div className="h-px bg-[var(--glass-border)]" />
                   </div>
                 ))}
               </div>

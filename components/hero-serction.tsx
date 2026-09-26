@@ -18,12 +18,12 @@ export const HeroSection = () => {
   return (
     <motion.section
       style={{ scale, opacity }}
-      className="relative min-h-[calc(100dvh-68px)] flex items-center overflow-hidden py-12 lg:py-0 bg-transparent text-[#1c1c18]"
+      className="relative min-h-[calc(100dvh-68px)] flex items-center overflow-hidden py-12 lg:py-0 bg-transparent text-[var(--on-surface)]"
     >
       {/* Subtle Teal Ambient Glow (Editorial & Soft) */}
       <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
-        <div className="absolute w-[600px] h-[600px] bg-[radial-gradient(circle,rgba(14,143,139,0.08)_0%,transparent_70%)] -top-40 -left-20" />
-        <div className="absolute w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(11,28,44,0.04)_0%,transparent_70%)] bottom-0 right-0" />
+        <div className="absolute w-[600px] h-[600px] bg-[radial-gradient(circle,rgba(18,135,132,0.08)_0%,transparent_70%)] -top-40 -left-20" />
+        <div className="absolute w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(0,0,0,0.05)_0%,transparent_70%)] bottom-0 right-0" />
       </div>
 
       {/* Main Grid */}
@@ -39,11 +39,11 @@ export const HeroSection = () => {
             transition={{ duration: 0.5 }}
             className="flex items-center gap-3"
           >
-            <span className="label-eyebrow tracking-widest text-xs font-bold text-[#0e8f8b]">
+            <span className="label-eyebrow tracking-widest text-xs font-bold text-[var(--teal)]">
               Full-Stack Developer &amp; Analyst
             </span>
-            <span className="h-px w-8 bg-[#c4c6cc]" />
-            <span className="text-xs text-[#44474c] font-mono">
+            <span className="h-px w-8 bg-[var(--outline-variant)]" />
+            <span className="text-xs text-[var(--on-surface-variant)] font-mono">
               KPMG INDIA
             </span>
           </motion.div>
@@ -53,10 +53,10 @@ export const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="display-font text-5xl sm:text-6xl md:text-7xl xl:text-[82px] font-medium leading-[1.04] tracking-tight text-[#0b1c2c]"
+            className="display-font text-5xl sm:text-6xl md:text-7xl xl:text-[82px] font-medium leading-[1.04] tracking-tight text-[var(--ink)]"
           >
             Building thoughtful{" "}
-            <span className="italic font-normal text-[#0e8f8b]">digital experiences</span>{" "}
+            <span className="italic font-normal text-[var(--teal)]">digital experiences</span>{" "}
             &amp; scalable systems.
           </motion.h1>
 
@@ -65,11 +65,11 @@ export const HeroSection = () => {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="text-[#44474c] text-lg md:text-xl leading-relaxed max-w-xl"
+            className="text-[var(--on-surface-variant)] text-lg md:text-xl leading-relaxed max-w-xl"
           >
             I architect and build robust, high-performance web applications using modern
             full-stack technologies — currently an Analyst at{" "}
-            <span className="text-[#0b1c2c] font-semibold">KPMG India</span>,
+            <span className="text-[var(--ink)] font-semibold">KPMG India</span>,
             available for select freelance projects and technical consulting worldwide.
           </motion.p>
 
@@ -83,7 +83,7 @@ export const HeroSection = () => {
             <div className="flex flex-wrap items-center gap-3">
               <Link
                 href="#projects"
-                className="inline-flex items-center justify-center gap-2 bg-[#0e8f8b] text-white text-sm font-semibold tracking-wide px-7 py-3.5 rounded-full hover:bg-[#006a67] transition-all duration-200 shadow-sm"
+                className="inline-flex items-center justify-center gap-2 bg-[var(--teal)] text-white text-sm font-semibold tracking-wide px-7 py-3.5 rounded-full hover:bg-[var(--teal-strong)] transition-all duration-200 shadow-sm"
               >
                 View Projects
                 <ArrowUpRight size={16} />
@@ -91,14 +91,14 @@ export const HeroSection = () => {
 
               <Link
                 href="mailto:yashgtech00@gmail.com"
-                className="inline-flex items-center justify-center gap-2 border border-[#c4c6cc] text-[#0b1c2c] text-sm font-semibold tracking-wide px-7 py-3.5 rounded-full hover:border-[#0e8f8b] hover:text-[#0e8f8b] transition-all duration-200"
+                className="inline-flex items-center justify-center gap-2 border border-[var(--outline-variant)] text-[var(--ink)] text-sm font-semibold tracking-wide px-7 py-3.5 rounded-full hover:border-[var(--teal)] hover:text-[var(--teal)] transition-all duration-200"
               >
                 Contact Me
               </Link>
             </div>
 
             {/* Social icons */}
-            <div className="flex items-center gap-2.5 sm:ml-4 sm:border-l sm:border-[#c4c6cc] sm:pl-4">
+            <div className="flex items-center gap-2.5 sm:ml-4 sm:border-l sm:border-[var(--outline-variant)] sm:pl-4">
               {socialLinks.map(({ icon: Icon, href, label }) => (
                 <Link
                   key={label}
@@ -106,7 +106,7 @@ export const HeroSection = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-[rgba(11,28,44,0.08)] bg-[#f6f3ed] text-[#0b1c2c] hover:text-[#0e8f8b] hover:border-[#0e8f8b] transition-colors"
+                  className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-[var(--glass-border)] bg-[var(--surface-container-low)] text-[var(--ink)] hover:text-[var(--teal)] hover:border-[var(--teal)] transition-colors"
                 >
                   <Icon size={16} />
                 </Link>
@@ -124,11 +124,11 @@ export const HeroSection = () => {
         >
           <div className="relative w-full max-w-[340px] sm:max-w-[380px] lg:max-w-[420px]">
             {/* Subtle background decorative card */}
-            <div className="absolute -inset-3 bg-[#ebe8e2] rounded-[2rem] -rotate-2 -z-10 border border-[rgba(11,28,44,0.08)] opacity-60" />
+            <div className="absolute -inset-3 bg-[var(--surface-container-high)] rounded-[2rem] -rotate-2 -z-10 border border-[var(--glass-border)] opacity-60" />
             
             {/* Main Portrait Container */}
-            <div className="relative rounded-[1.75rem] overflow-hidden border border-[rgba(11,28,44,0.08)] bg-white shadow-[0_16px_40px_rgba(11,28,44,0.06)]">
-              <div className="relative h-[380px] sm:h-[420px] overflow-hidden bg-gradient-to-b from-[#f6f3ed] to-[#fcf9f3]">
+            <div className="relative rounded-[1.75rem] overflow-hidden border border-[var(--glass-border)] bg-[var(--surface-container-lowest)] shadow-[0_16px_40px_rgba(0,0,0,0.06)]">
+              <div className="relative h-[380px] sm:h-[420px] overflow-hidden bg-gradient-to-b from-[var(--surface-container-low)] to-[var(--surface)]">
                 <img
                   src="/yash-nobg.png"
                   alt="Yash Gupta"
@@ -141,14 +141,14 @@ export const HeroSection = () => {
               </div>
 
               {/* Status Banner */}
-              <div className="glass-panel mx-3 mb-3 p-3 flex items-center gap-3 border border-[rgba(11,28,44,0.08)] bg-white/85 backdrop-blur-md">
+              <div className="glass-panel mx-3 mb-3 p-3 flex items-center gap-3 border border-[var(--glass-border)] bg-[var(--surface-container-lowest)]/85 backdrop-blur-md">
                 <span className="relative flex h-2.5 w-2.5 shrink-0">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#0e8f8b] opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#0e8f8b]" />
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--teal)] opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[var(--teal)]" />
                 </span>
-                <p className="text-xs text-[#44474c] font-mono">
+                <p className="text-xs text-[var(--on-surface-variant)] font-mono">
                   Currently building{" "}
-                  <span className="text-[#0b1c2c] font-semibold">Scalable Digital Products</span>
+                  <span className="text-[var(--ink)] font-semibold">Scalable Digital Products</span>
                 </p>
               </div>
             </div>
