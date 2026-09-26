@@ -17,7 +17,7 @@ export function ProjectRow({
       className="group rounded-[2rem] bg-white border border-[rgba(11,28,44,0.08)] p-8 sm:p-10 lg:p-12 transition-all duration-300 hover:border-[#0e8f8b]/40 hover:shadow-[0_16px_40px_rgba(11,28,44,0.06)] shadow-xs"
       style={{ backgroundColor: "#ffffff" }}
     >
-      <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-stretch">
         <motion.div
           initial={{ opacity: 0, x: reverse ? 40 : -40 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -91,10 +91,10 @@ export function ProjectRow({
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className={`min-w-0 ${reverse ? "md:order-1" : ""}`}
+          className={`min-w-0 relative h-[360px] sm:h-[400px] md:h-auto ${reverse ? "md:order-1" : ""}`}
         >
           <div
-            className="w-full rounded-[1.5rem] overflow-hidden border border-[rgba(11,28,44,0.08)] bg-[#f6f3ed] p-2 min-w-0"
+            className="w-full h-full md:absolute md:inset-0 rounded-[1.5rem] overflow-hidden border border-[rgba(11,28,44,0.08)] bg-[#f6f3ed] p-2 flex flex-col"
             style={{ backgroundColor: "#f6f3ed" }}
           >
             <MediaScroller images={project.images} video={project.video} />
@@ -113,54 +113,122 @@ export function MediaScroller({
   video?: string;
 }) {
   const imgs = (images ?? []).filter((img) => img && img.trim() !== "");
-  const items: { type: "image" | "video"; src: string }[] = [
+  const rawItems: { type: "image" | "video"; src: string }[] = [
     ...imgs.map((src) => ({ type: "image" as const, src })),
     ...(video ? [{ type: "video" as const, src: video }] : []),
   ];
 
-  if (items.length === 0) {
+  if (rawItems.length === 0) {
     return (
-      <div className="min-h-[220px] rounded-xl border border-[rgba(11,28,44,0.08)] bg-[#f6f3ed] flex items-center justify-center text-[#44474c] text-sm font-mono">
+      <div className="w-full h-full flex items-center justify-center rounded-xl border border-[rgba(11,28,44,0.08)] bg-[#f6f3ed] text-[#44474c] text-sm font-mono">
         No media available
       </div>
     );
   }
 
+  // If only 1 media item, display it cleanly filling the card naturally
+  if (rawItems.length === 1) {
+    const item = rawItems[0];
+    return (
+      <div className="relative w-full h-full overflow-hidden rounded-xl bg-[#f0eee8] border border-[rgba(11,28,44,0.08)]">
+        {item.type === "video" ? (
+          <video
+            src={item.src}
+            className="w-full h-full object-cover"
+            muted
+            loop
+            autoPlay
+            playsInline
+          />
+        ) : (
+          <img
+            src={item.src}
+            alt="Project visual"
+            className="w-full h-full object-cover"
+          />
+        )}
+      </div>
+    );
+  }
+
+  // Ensure enough items in the stream so the loop is seamless and filled
+  const sequence =
+    rawItems.length === 2
+      ? [...rawItems, ...rawItems]
+      : rawItems;
+
+  // Consistent linear scroll velocity: ~2.8s per item in the sequence
+  const duration = Math.max(10, sequence.length * 2.8);
+
   return (
-    <div className="relative w-full overflow-hidden rounded-xl">
-      <motion.div
-        className="flex gap-4"
-        animate={{ x: ["0%", "-50%"] }}
-        transition={{ repeat: Infinity, duration: 24, ease: "linear" }}
+    <div className="relative w-full h-full overflow-hidden rounded-xl bg-[#f6f3ed]">
+      {/* Continuous GPU-accelerated vertical marquee track */}
+      <div
+        className="animate-vertical-scroll flex flex-col will-change-transform"
+        style={{ animationDuration: `${duration}s` }}
       >
-        {[...items, ...items].map((item, index) => (
-          <div
-            key={index}
-            className="min-w-[280px] sm:min-w-[340px] h-[220px] sm:h-[260px] rounded-xl overflow-hidden border border-[rgba(11,28,44,0.08)] group relative bg-[#f0eee8]"
-            style={{ backgroundColor: "#f0eee8" }}
-          >
-            {item.type === "video" ? (
-              <video
-                src={item.src}
-                className="w-full h-full object-cover"
-                muted
-                loop
-                autoPlay
-                playsInline
-              />
-            ) : (
-              <img
-                src={item.src}
-                alt="Project visual"
-                className="w-full h-full object-cover transition duration-500 group-hover:scale-105"
-              />
-            )}
-          </div>
-        ))}
-      </motion.div>
-      {/* Side Fade Gradients */}
-      <div className="absolute left-0 top-0 h-full w-16 bg-gradient-to-r from-white to-transparent pointer-events-none" />
-      <div className="absolute right-0 top-0 h-full w-16 bg-gradient-to-l from-white to-transparent pointer-events-none" />
+        {/* Set 1 */}
+        <div className="flex flex-col gap-4 pb-4">
+          {sequence.map((item, index) => (
+            <div
+              key={`item-1-${index}`}
+              className="w-full h-[220px] sm:h-[250px] md:h-[270px] shrink-0 rounded-xl overflow-hidden border border-[rgba(11,28,44,0.08)] relative bg-[#f0eee8]"
+              style={{ backgroundColor: "#f0eee8" }}
+            >
+              {item.type === "video" ? (
+                <video
+                  src={item.src}
+                  className="w-full h-full object-cover"
+                  muted
+                  loop
+                  autoPlay
+                  playsInline
+                />
+              ) : (
+                <img
+                  src={item.src}
+                  alt="Project visual"
+                  className="w-full h-full object-cover"
+                  loading="eager"
+                />
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* Set 2 (Identical duplicate for seamless bottom-to-top infinite loop) */}
+        <div className="flex flex-col gap-4 pb-4" aria-hidden="true">
+          {sequence.map((item, index) => (
+            <div
+              key={`item-2-${index}`}
+              className="w-full h-[220px] sm:h-[250px] md:h-[270px] shrink-0 rounded-xl overflow-hidden border border-[rgba(11,28,44,0.08)] relative bg-[#f0eee8]"
+              style={{ backgroundColor: "#f0eee8" }}
+            >
+              {item.type === "video" ? (
+                <video
+                  src={item.src}
+                  className="w-full h-full object-cover"
+                  muted
+                  loop
+                  autoPlay
+                  playsInline
+                />
+              ) : (
+                <img
+                  src={item.src}
+                  alt="Project visual"
+                  className="w-full h-full object-cover"
+                  loading="eager"
+                />
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Top and Bottom Fade Gradients */}
+      <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-[#f6f3ed] to-transparent pointer-events-none z-10" />
+      <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#f6f3ed] to-transparent pointer-events-none z-10" />
     </div>
   );
 }

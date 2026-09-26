@@ -172,8 +172,25 @@ body {
   outline-offset: 2px;
 }
 
+@keyframes verticalScroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, -50%, 0);
+  }
+}
+
+.animate-vertical-scroll {
+  animation: verticalScroll 10s linear infinite;
+  will-change: transform;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  .animate-vertical-scroll {
+    animation: none !important;
   }
 }

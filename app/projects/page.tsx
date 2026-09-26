@@ -49,7 +49,7 @@ export default function AllProjectsPage() {
       style={{ backgroundColor: "#fcf9f3", color: "#1c1c18" }}
     >
       <Navbar />
-      <div className="container-page py-16">
+      <div className="container-page py-5">
         <div className="mb-16">
           <Link
             href="/"
@@ -64,7 +64,7 @@ export default function AllProjectsPage() {
             All Projects
           </h1>
           <p className="text-[var(--on-surface-variant)] mt-3 text-lg md:text-xl max-w-2xl leading-relaxed">
-            Everything I&apos;ve built — client engagements, production web apps, tools &amp; experiments.
+            Everything I&apos;ve built client engagements, production web apps, tools &amp; experiments.
           </p>
         </div>
 

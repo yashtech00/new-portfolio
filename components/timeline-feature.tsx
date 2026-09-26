@@ -6,7 +6,8 @@ import { useRef } from "react";
 const timelineData = [
   {
     date: "2026 — PRESENT",
-    title: "Analyst — Full Stack Developer",
+    title: "Software Development Engineer",
+    title2: "Analyst",
     company: "KPMG India Advisory Services",
     description: [
       "Architecting enterprise-grade digital solutions utilizing modern full-stack architectures to drive digital transformation for global clients.",
