@@ -92,14 +92,14 @@ export function GooeyText({
       <span
         ref={text1Ref}
         className={cn(
-          "absolute inline-block select-none text-center text-5xl sm:text-6xl md:text-7xl display-font font-medium text-[#0b1c2c]",
+          "absolute inline-block select-none text-center text-5xl sm:text-6xl md:text-7xl display-font font-medium text-[var(--ink)]",
           textClassName
         )}
       />
       <span
         ref={text2Ref}
         className={cn(
-          "absolute inline-block select-none text-center text-5xl sm:text-6xl md:text-7xl display-font font-medium text-[#0b1c2c]",
+          "absolute inline-block select-none text-center text-5xl sm:text-6xl md:text-7xl display-font font-medium text-[var(--ink)]",
           textClassName
         )}
       />

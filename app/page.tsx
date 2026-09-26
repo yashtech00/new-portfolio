@@ -40,14 +40,15 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="flex flex-col items-center justify-center min-h-screen px-6 bg-[var(--surface)]"
           >
-            <span className="label-eyebrow mb-6 text-xs tracking-widest text-[var(--teal)]">
+            <span className="label-eyebrow mb-6 text-xs tracking-widest text-[var(--teal)] font-mono">
               YASH GUPTA · PORTFOLIO
             </span>
             <GooeyText
-              texts={["Engineering", "Architecture", "Performance", "Full-Stack"]}
+              texts={["Engineering", "Architecture", "Performance", "Full-Stack developer"]}
               morphTime={0.9}
               cooldownTime={0.25}
               className="font-semibold text-5xl md:text-7xl text-[var(--ink)]"
+              textClassName="text-[var(--ink)]"
             />
           </motion.div>
         ) : (
@@ -66,65 +67,65 @@ export default function Home() {
 
             <main className="relative z-10 bg-transparent">
               {/* HERO */}
-              <section className="relative min-h-screen w-full bg-transparent">
+              <section id="hero" className="relative min-h-screen w-full bg-transparent">
                 <Navbar />
                 <HeroSection />
               </section>
 
-            <StackSection
-              id="services"
-              zIndex={20}
-              title="WHAT I DO /"
-              label="(CAPABILITIES & SERVICES)"
-              description="I specialize in building fast, reliable, and user-friendly full-stack web applications. I help businesses and teams turn technical requirements into high-quality digital platforms that perform and scale."
-            >
-              <WhatIDo />
-            </StackSection>
+              <StackSection
+                id="services"
+                zIndex={20}
+                title="WHAT I DO /"
+                label="CAPABILITIES & SERVICES"
+                description="Scalable systems · clean architecture · modern web applications engineered for production."
+              >
+                <WhatIDo />
+              </StackSection>
 
-            <StackSection
-              id="projects"
-              zIndex={30}
-              title="SELECTED WORKS /"
-              label="(FEATURED PROJECTS)"
-              description="Real products shipped with clean architecture, thoughtful UX, and production-ready code — from enterprise systems to experimental tools."
-            >
-              <Projects />
-            </StackSection>
+              <StackSection
+                id="projects"
+                zIndex={30}
+                title="SELECTED WORKS /"
+                label="FEATURED PROJECTS"
+                description="Production platforms and experimental tools shipped with clean architecture, thoughtful UX, and reliable code."
+              >
+                <Projects />
+              </StackSection>
 
-            <StackSection
-              id="about"
-              zIndex={40}
-              title="ABOUT ME /"
-              label="(BACKGROUND & METRICS)"
-              description="Full-Stack Developer & Analyst focused on building scalable, high-performance, and AI-driven solutions that solve real-world business problems."
-            >
-              <AboutSection />
-            </StackSection>
+              <StackSection
+                id="about"
+                zIndex={40}
+                title="ABOUT ME /"
+                label="BACKGROUND & METRICS"
+                description="Full-Stack Developer & Analyst focused on building scalable, high-performance, and AI-driven solutions."
+              >
+                <AboutSection />
+              </StackSection>
 
-            <StackSection
-              id="timeline"
-              zIndex={50}
-              title="MY JOURNEY /"
-              label="(EXPERIENCE & EDUCATION)"
-              description="From learning computer science fundamentals to delivering enterprise digital solutions — a timeline of growth, impact, and continuous engineering."
-            >
-              <ScrollTimeline />
-            </StackSection>
+              <StackSection
+                id="timeline"
+                zIndex={50}
+                title="MY JOURNEY /"
+                label="EXPERIENCE & EDUCATION"
+                description="From computer science fundamentals to enterprise digital transformation — a timeline of continuous engineering."
+              >
+                <ScrollTimeline />
+              </StackSection>
 
-            <StackSection
-              id="contact"
-              zIndex={60}
-              title="LET'S CONNECT /"
-              label="(GET IN TOUCH)"
-              description="Whether it's a project, consulting inquiry, or technical collaboration — I'm always open to meaningful conversations and building something impactful together."
-            >
-              <ConnectWithMe />
-            </StackSection>
+              <StackSection
+                id="contact"
+                zIndex={60}
+                title="LET'S CONNECT /"
+                label="GET IN TOUCH"
+                description="Open for architectural consulting, engineering collaborations, and impactful digital products."
+              >
+                <ConnectWithMe />
+              </StackSection>
 
-            <Footer />
-          </main>
-        </div>
-      )}
+              <Footer />
+            </main>
+          </div>
+        )}
       </AnimatePresence>
     </div>
   );

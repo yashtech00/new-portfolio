@@ -21,7 +21,7 @@ const newsreader = Newsreader({
 });
 
 export const metadata: Metadata = {
-  title: "Yash Gupta — Full-Stack Developer & Analyst",
+  title: "Yash Gupta Full-Stack Developer & Analyst",
   description:
     "Portfolio of Yash Gupta, Full-Stack Developer & Analyst specializing in scalable systems, AI-driven applications, and modern web engineering.",
 };
