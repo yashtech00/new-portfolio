@@ -18,6 +18,7 @@ export const seedProjects: ProjectInput[] = [
     tech: ["Next.js", "React", "PostgreSQL", "Prisma", "Judge0 API", "Tailwind"],
     featured: true,
     order: 0,
+    featuredOrder: 1,
   },
   {
     title: "AI Workflow Builder",
@@ -30,6 +31,7 @@ export const seedProjects: ProjectInput[] = [
     tech: ["Next.js", "Langchain", "OpenAI"],
     featured: true,
     order: 1,
+    featuredOrder: 2,
   },
   {
     title: "Realtime Analytics",
@@ -42,5 +44,6 @@ export const seedProjects: ProjectInput[] = [
     tech: ["Kafka", "Node.js", "React"],
     featured: true,
     order: 2,
+    featuredOrder: 3,
   },
 ];

@@ -12,8 +12,21 @@ const ProjectSchema = new Schema(
     tech: { type: [String], default: [] },
     featured: { type: Boolean, default: true },
     order: { type: Number, default: 0 },
+    featuredOrder: {
+      type: Number,
+      enum: [1, 2, 3, null],
+      default: null,
+    },
   },
   { timestamps: true }
+);
+
+ProjectSchema.index(
+  { featuredOrder: 1 },
+  {
+    unique: true,
+    partialFilterExpression: { featuredOrder: { $type: "number" } },
+  }
 );
 
 export const Project =

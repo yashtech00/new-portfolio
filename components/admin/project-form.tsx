@@ -43,14 +43,18 @@ export function ProjectForm({ editing, onSaved, onCancelEdit }: ProjectFormProps
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
 
+  const [deletingIndex, setDeletingIndex] = useState<number | null>(null);
+
   const uploadFile = async (file: File, type: "image" | "video") => {
     const fd = new FormData();
     fd.append("file", file);
     fd.append("type", type);
 
     const res = await fetch("/api/upload", { method: "POST", body: fd });
-    if (!res.ok) throw new Error("Upload failed");
-    const data = await res.json();
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      throw new Error(data.error || "Upload failed");
+    }
     return data.url as string;
   };
 
@@ -67,8 +71,8 @@ export function ProjectForm({ editing, onSaved, onCancelEdit }: ProjectFormProps
         urls.push(url);
       }
       setForm((prev) => ({ ...prev, images: [...prev.images, ...urls] }));
-    } catch {
-      setError("Image upload failed");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Image upload failed");
     } finally {
       setUploading(false);
       e.target.value = "";
@@ -84,19 +88,84 @@ export function ProjectForm({ editing, onSaved, onCancelEdit }: ProjectFormProps
     try {
       const url = await uploadFile(file, "video");
       setForm((prev) => ({ ...prev, video: url }));
-    } catch {
-      setError("Video upload failed");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Video upload failed");
     } finally {
       setUploading(false);
       e.target.value = "";
     }
   };
 
-  const removeImage = (index: number) => {
+  const removeImage = async (index: number) => {
+    const urlToRemove = form.images[index];
+    if (!urlToRemove) return;
+
+    setError("");
+
+    // If it's an R2 asset, delete it from storage
+    const isR2Asset =
+      !urlToRemove.includes("cloudinary.com") &&
+      (urlToRemove.includes("/portfolio/projects/") ||
+        urlToRemove.includes(".r2.dev") ||
+        urlToRemove.includes(".r2.cloudflarestorage.com"));
+
+    if (isR2Asset) {
+      setDeletingIndex(index);
+      try {
+        const res = await fetch("/api/upload", {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ url: urlToRemove }),
+        });
+
+        if (!res.ok) {
+          const data = await res.json().catch(() => ({}));
+          throw new Error(data.error || "Failed to delete image from storage");
+        }
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "Failed to delete image from storage");
+        setDeletingIndex(null);
+        return;
+      } finally {
+        setDeletingIndex(null);
+      }
+    }
+
     setForm((prev) => ({
       ...prev,
       images: prev.images.filter((_, i) => i !== index),
     }));
+  };
+
+  const removeVideo = async () => {
+    if (!form.video) return;
+    setError("");
+
+    const isR2Asset =
+      !form.video.includes("cloudinary.com") &&
+      (form.video.includes("/portfolio/projects/") ||
+        form.video.includes(".r2.dev") ||
+        form.video.includes(".r2.cloudflarestorage.com"));
+
+    if (isR2Asset) {
+      try {
+        const res = await fetch("/api/upload", {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ url: form.video }),
+        });
+
+        if (!res.ok) {
+          const data = await res.json().catch(() => ({}));
+          throw new Error(data.error || "Failed to delete video from storage");
+        }
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "Failed to delete video from storage");
+        return;
+      }
+    }
+
+    setForm((prev) => ({ ...prev, video: "" }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -206,33 +275,27 @@ export function ProjectForm({ editing, onSaved, onCancelEdit }: ProjectFormProps
         />
       </div>
 
-      <div className="grid grid-cols-2 gap-3">
+      <div>
+        <label className="block text-xs text-[var(--on-surface-variant)] font-medium mb-1 font-mono">
+          Display Order
+        </label>
         <input
           type="number"
           placeholder="Order"
           value={form.order}
           onChange={(e) => setForm({ ...form, order: Number(e.target.value) })}
-          className="bg-[var(--surface-container-low)] border border-[var(--outline-variant)] rounded-xl px-4 py-2.5 text-[var(--ink)] outline-none focus:border-[var(--teal)] transition-colors"
+          className="w-full bg-[var(--surface-container-low)] border border-[var(--outline-variant)] rounded-xl px-4 py-2.5 text-[var(--ink)] outline-none focus:border-[var(--teal)] transition-colors"
         />
-        <label className="flex items-center gap-2 text-[var(--on-surface-variant)] text-sm px-2 font-medium">
-          <input
-            type="checkbox"
-            checked={form.featured}
-            onChange={(e) => setForm({ ...form, featured: e.target.checked })}
-            className="accent-[var(--teal)]"
-          />
-          Featured on homepage
-        </label>
       </div>
 
       <div className="space-y-2">
         <label className="block text-sm text-[var(--on-surface-variant)] font-medium">Images</label>
         <input
           type="file"
-          accept="image/*"
+          accept="image/jpeg,image/png,image/webp,image/gif,image/avif"
           multiple
           onChange={handleImageUpload}
-          disabled={uploading}
+          disabled={uploading || deletingIndex !== null}
           className="text-sm text-[var(--on-surface-variant)]"
         />
         {form.images.length > 0 && (
@@ -243,9 +306,11 @@ export function ProjectForm({ editing, onSaved, onCancelEdit }: ProjectFormProps
                 <button
                   type="button"
                   onClick={() => removeImage(i)}
-                  className="absolute -top-1 -right-1 bg-red-600 text-white text-xs w-5 h-5 rounded-full opacity-0 group-hover:opacity-100 transition"
+                  disabled={deletingIndex === i}
+                  className="absolute -top-1 -right-1 bg-red-600 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition disabled:opacity-50"
+                  title="Remove image"
                 >
-                  ×
+                  {deletingIndex === i ? "…" : "×"}
                 </button>
               </div>
             ))}
@@ -257,13 +322,22 @@ export function ProjectForm({ editing, onSaved, onCancelEdit }: ProjectFormProps
         <label className="block text-sm text-[var(--on-surface-variant)] font-medium">Video (optional)</label>
         <input
           type="file"
-          accept="video/*"
+          accept="video/mp4,video/webm"
           onChange={handleVideoUpload}
           disabled={uploading}
           className="text-sm text-[var(--on-surface-variant)]"
         />
         {form.video && (
-          <p className="text-xs text-[var(--teal)] font-mono truncate">Video uploaded ✓</p>
+          <div className="flex items-center gap-2">
+            <p className="text-xs text-[var(--teal)] font-mono truncate">Video uploaded ✓</p>
+            <button
+              type="button"
+              onClick={removeVideo}
+              className="text-xs text-red-600 hover:text-red-700 underline font-medium"
+            >
+              Remove
+            </button>
+          </div>
         )}
       </div>
 

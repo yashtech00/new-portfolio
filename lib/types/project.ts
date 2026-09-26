@@ -10,6 +10,7 @@ export interface Project {
   tech: string[];
   featured: boolean;
   order: number;
+  featuredOrder?: 1 | 2 | 3 | null;
   createdAt: string;
   updatedAt: string;
 }
@@ -25,6 +26,7 @@ export interface ProjectInput {
   tech: string[];
   featured?: boolean;
   order?: number;
+  featuredOrder?: 1 | 2 | 3 | null;
 }
 
 /** Legacy shape used by static seed data */
@@ -33,11 +35,15 @@ export interface LegacyProject {
   title: string;
   description: string;
   longDescription: string;
-  image: string[];
+  image?: string[];
+  images?: string[];
   github: string;
   demo: string;
   tech: string[];
   video?: string;
+  featured?: boolean;
+  order?: number;
+  featuredOrder?: 1 | 2 | 3 | null;
 }
 
 export function toProjectMedia(project: Pick<Project, "images" | "video">) {
@@ -47,12 +53,16 @@ export function toProjectMedia(project: Pick<Project, "images" | "video">) {
 
 /** Normalize API/legacy project for UI components */
 export function normalizeProject(
-  project: Project | LegacyProject | (LegacyProject & { _id?: string })
+  project:
+    | Project
+    | LegacyProject
+    | (LegacyProject & { _id?: string })
+    | (ProjectInput & { id?: number | string; _id?: string })
 ) {
   const images =
     "images" in project && Array.isArray(project.images)
       ? project.images
-      : "image" in project
+      : "image" in project && Array.isArray(project.image)
         ? project.image
         : [];
 
@@ -75,6 +85,8 @@ export function normalizeProject(
     tech: project.tech,
     featured: "featured" in project ? project.featured : true,
     order: "order" in project ? project.order : 0,
+    featuredOrder:
+      "featuredOrder" in project ? (project.featuredOrder ?? null) : null,
   };
 }
 

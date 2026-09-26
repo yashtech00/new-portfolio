@@ -8,7 +8,15 @@ export async function GET(request: Request) {
     await connectDB();
 
     const { searchParams } = new URL(request.url);
+    const top3 = searchParams.get("top3");
     const featured = searchParams.get("featured");
+
+    if (top3 === "true") {
+      const projects = await Project.find({ featuredOrder: { $ne: null } })
+        .sort({ featuredOrder: 1 })
+        .limit(3);
+      return Response.json(projects);
+    }
 
     const filter = featured === "true" ? { featured: true } : {};
     const projects = await Project.find(filter).sort({ order: 1, createdAt: -1 });

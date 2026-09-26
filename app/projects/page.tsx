@@ -13,11 +13,12 @@ const fallbackProjects: NormalizedProject[] = seedProjects.map((p, i) =>
     title: p.title,
     description: p.description,
     longDescription: p.longDescription,
-    image: p.images,
+    images: p.images,
     github: p.github,
     demo: p.demo,
     tech: p.tech,
     video: p.video,
+    featuredOrder: p.featuredOrder,
   })
 );
 
@@ -27,9 +28,12 @@ export default function AllProjectsPage() {
 
   useEffect(() => {
     fetch("/api/projects")
-      .then((res) => (res.ok ? res.json() : []))
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to fetch projects");
+        return res.json();
+      })
       .then((data) => {
-        if (Array.isArray(data) && data.length > 0) {
+        if (Array.isArray(data)) {
           setProjects(data.map(normalizeProject));
         } else {
           setProjects(fallbackProjects);

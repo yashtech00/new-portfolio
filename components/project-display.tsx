@@ -27,7 +27,11 @@ export function ProjectRow({
         >
           <div className="flex items-center gap-3 mb-3">
             <span className="label-eyebrow text-xs font-bold text-[#0e8f8b] tracking-widest uppercase">
-              Featured Project
+              {project.featuredOrder === 1 ||
+              project.featuredOrder === 2 ||
+              project.featuredOrder === 3
+                ? `Top Project · #${project.featuredOrder}`
+                : "Project"}
             </span>
           </div>
 

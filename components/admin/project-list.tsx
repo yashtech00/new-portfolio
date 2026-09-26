@@ -32,9 +32,16 @@ export function ProjectList({ projects, onEdit, onDelete, onSeed }: ProjectListP
               className="flex items-start justify-between gap-4 bg-[var(--surface-container-low)] border border-[var(--glass-border)] rounded-xl p-4 transition-colors hover:border-[var(--teal)]/40"
             >
               <div className="min-w-0">
-                <p className="text-[var(--ink)] font-semibold truncate text-sm">{project.title}</p>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <p className="text-[var(--ink)] font-semibold truncate text-sm">{project.title}</p>
+                  {project.featuredOrder ? (
+                    <span className="shrink-0 text-xs px-2 py-0.5 rounded-full font-mono font-semibold bg-[var(--teal)]/15 text-[var(--teal)] border border-[var(--teal)]/30">
+                      Top #{project.featuredOrder}
+                    </span>
+                  ) : null}
+                </div>
                 <p className="text-[var(--on-surface-variant)] text-xs mt-1 font-mono">
-                  {project.featured ? "Featured" : "Hidden"} · Order {project.order}
+                  Order {project.order}
                 </p>
               </div>
               <div className="flex gap-2 shrink-0">

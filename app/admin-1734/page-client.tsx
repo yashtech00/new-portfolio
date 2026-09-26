@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { LoginForm } from "@/components/admin/login-form";
 import { ProjectForm } from "@/components/admin/project-form";
 import { ProjectList } from "@/components/admin/project-list";
+import { Top3Selector } from "@/components/admin/top3-selector";
 import type { Project } from "@/lib/types/project";
 import Link from "next/link";
 
@@ -88,6 +89,10 @@ export default function AdminPageClient() {
           >
             Logout
           </button>
+        </div>
+
+        <div className="mb-8">
+          <Top3Selector projects={projects} onUpdated={fetchProjects} />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
