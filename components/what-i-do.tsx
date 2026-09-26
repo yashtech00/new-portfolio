@@ -1,85 +1,138 @@
 "use client";
 
+import { Layers, Layout, Cpu } from "lucide-react";
+
 const services = [
   {
     id: "01",
     title: "Full-Stack Development",
+    icon: Layers,
     description:
       "From frontend interactions to backend APIs, I build complete web solutions. I work with modern stacks to deliver apps that are scalable, maintainable, and ready for real-world users.",
-    skills: [
-      "React, Node.js, Express.js",
-      "REST APIs, Firebase, Docker",
-      "Git, GitHub, Postman",
+    competencies: [
+      { id: "01", name: "React, Node.js, Express.js" },
+      { id: "02", name: "REST APIs, Firebase, Docker" },
+      { id: "03", name: "Git, GitHub, Postman" },
     ],
   },
   {
     id: "02",
     title: "UI/UX & Frontend",
+    icon: Layout,
     description:
       "Good design feels effortless. I design and develop responsive, intuitive interfaces that work smoothly across devices, with a strong focus on clarity, accessibility, and performance.",
-    skills: [
-      "NextJs, TailwindCSS, GSAP",
-      "Figma → Pixel-perfect code",
-      "HTML, CSS, JavaScript",
+    competencies: [
+      { id: "01", name: "NextJs, TailwindCSS, GSAP" },
+      { id: "02", name: "Figma → Pixel-perfect code" },
+      { id: "03", name: "HTML, CSS, JavaScript" },
     ],
   },
   {
     id: "03",
     title: "Optimization",
+    icon: Cpu,
     description:
       "I focus on building systems that stay reliable as things scale. From handling data efficiently to designing clean architecture, I apply core computer science principles.",
-    skills: [
-      "Data Structures & Algorithms",
-      "DBMS, OOP, OS Fundamentals",
-      "Scalable systems & data pipelines",
+    competencies: [
+      { id: "01", name: "Data Structures & Algorithms" },
+      { id: "02", name: "DBMS, OOP, OS Fundamentals" },
+      { id: "03", name: "Scalable systems & data pipelines" },
     ],
   },
 ];
 
 export const WhatIDo = () => {
   return (
-    <div className="flex flex-col gap-8 md:gap-10 text-[var(--on-surface)]">
-      {services.map((service) => (
-        <div
-          key={service.id}
-          className="w-full bg-[var(--surface-container-lowest)] rounded-3xl border border-[var(--glass-border)] shadow-[0_12px_40px_rgba(0,0,0,0.05)] overflow-hidden transition-all duration-300 hover:border-[var(--teal)]/40 hover:shadow-[0_16px_40px_rgba(0,0,0,0.08)]"
-        >
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+      {services.map((service) => {
+        const Icon = service.icon;
+        return (
           <div
-            className="flex items-center justify-between gap-6 px-6 md:px-12 py-6 border-b border-[var(--glass-border)] bg-[var(--surface-container-low)]"
+            key={service.id}
+            className="relative flex flex-col justify-between p-6 sm:p-8 bg-[var(--surface-container-lowest)] border border-dashed border-[var(--teal)]/35 transition-all duration-300 hover:border-[var(--teal)] hover:shadow-[0_12px_32px_rgba(0,0,0,0.04)] dark:hover:shadow-[0_12px_32px_rgba(0,0,0,0.3)] group"
           >
-            <span className="text-[var(--teal)] font-mono font-bold text-xl md:text-2xl shrink-0">
-              ({service.id})
-            </span>
-            <h3 className="display-font min-w-0 text-xl md:text-3xl lg:text-4xl font-semibold tracking-tight text-[var(--ink)] text-right md:text-left">
-              {service.title}
-            </h3>
-          </div>
+            {/* Corner Crosshairs */}
+            <div className="absolute -top-[5.5px] -left-[5.5px] text-[var(--teal)] pointer-events-none">
+              <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+                <path
+                  d="M5.5 0V11M0 5.5H11"
+                  stroke="currentColor"
+                  strokeWidth="1.2"
+                />
+              </svg>
+            </div>
+            <div className="absolute -top-[5.5px] -right-[5.5px] text-[var(--teal)] pointer-events-none">
+              <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+                <path
+                  d="M5.5 0V11M0 5.5H11"
+                  stroke="currentColor"
+                  strokeWidth="1.2"
+                />
+              </svg>
+            </div>
+            <div className="absolute -bottom-[5.5px] -left-[5.5px] text-[var(--teal)] pointer-events-none">
+              <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+                <path
+                  d="M5.5 0V11M0 5.5H11"
+                  stroke="currentColor"
+                  strokeWidth="1.2"
+                />
+              </svg>
+            </div>
+            <div className="absolute -bottom-[5.5px] -right-[5.5px] text-[var(--teal)] pointer-events-none">
+              <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+                <path
+                  d="M5.5 0V11M0 5.5H11"
+                  stroke="currentColor"
+                  strokeWidth="1.2"
+                />
+              </svg>
+            </div>
 
-          <div className="flex justify-end px-6 md:px-12 py-8 md:py-12 bg-[var(--surface-container-lowest)]">
-            <div className="flex flex-col gap-8 md:w-2/4 w-full">
-              <p className="text-[var(--on-surface-variant)] text-base md:text-lg lg:text-xl leading-relaxed max-w-xl">
+            {/* Top Content */}
+            <div>
+              {/* Header: Number and Icon */}
+              <div className="flex items-center justify-between">
+                <span className="text-[var(--teal)] font-mono font-bold text-base tracking-tight">
+                  ({service.id})
+                </span>
+                <div className="w-10 h-10 rounded-xl bg-[var(--surface-container-high)]/70 dark:bg-[var(--surface-container-high)]/50 flex items-center justify-center text-[var(--teal)] transition-transform duration-300 group-hover:scale-105">
+                  <Icon className="w-5 h-5 stroke-[1.8]" />
+                </div>
+              </div>
+
+              {/* Title */}
+              <h3 className="mt-8 text-xl sm:text-2xl font-bold text-[var(--ink)] tracking-tight">
+                {service.title}
+              </h3>
+
+              {/* Description */}
+              <p className="mt-4 text-sm sm:text-[15px] leading-relaxed text-[var(--on-surface-variant)]">
                 {service.description}
               </p>
+            </div>
 
-              <div className="space-y-0">
-                {service.skills.map((skill, i) => (
-                  <div key={i}>
-                    <div className="flex items-center gap-4 py-3.5">
-                      <span className="text-xs text-[var(--teal)] font-mono font-semibold shrink-0">
-                        0{i + 1}
-                      </span>
-                      <p className="text-base md:text-lg font-medium text-[var(--ink)]">
-                        {skill}
-                      </p>
-                    </div>
-                    <div className="h-px bg-[var(--glass-border)]" />
+            {/* Bottom Content: Key Competencies */}
+            <div className="mt-8 pt-6 border-t border-dashed border-[var(--teal)]/20">
+              <span className="text-[11px] font-mono font-medium tracking-widest uppercase text-[var(--on-surface-variant)]/80 block mb-4">
+                KEY COMPETENCIES
+              </span>
+              <div className="space-y-3">
+                {service.competencies.map((comp) => (
+                  <div key={comp.id} className="flex items-start gap-3">
+                    <span className="text-xs font-mono font-bold text-[var(--teal)] shrink-0 pt-0.5">
+                      {comp.id}
+                    </span>
+                    <span className="text-sm font-medium text-[var(--ink)] leading-snug">
+                      {comp.name}
+                    </span>
                   </div>
                 ))}
               </div>
             </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 };
