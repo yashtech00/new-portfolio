@@ -47,7 +47,7 @@ export const HeroSection = () => {
           >
             <span className="flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-[var(--teal)]">
               <span className="w-1.5 h-1.5 rounded-full bg-[var(--teal)] animate-pulse" />
-              Full-Stack Developer &amp; Analyst
+              Software Developer Engineer &amp; Analyst
             </span>
             <span className="h-px w-6 bg-[var(--outline-variant)]" />
             <span className="text-[11px] text-[var(--on-surface-variant)] font-mono tracking-wider">
@@ -75,7 +75,7 @@ export const HeroSection = () => {
             className="text-[var(--on-surface-variant)] text-base sm:text-lg md:text-xl leading-relaxed max-w-xl"
           >
             I architect and engineer high-performance web applications using modern full-stack
-            technologies currently an Analyst at{" "}
+            technologies currently an SDE Analyst at{" "}
             <span className="text-[var(--ink)] font-semibold">KPMG India</span>, available for
             select engineering collaborations and architectural consulting.
           </motion.p>
