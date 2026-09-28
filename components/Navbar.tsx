@@ -6,8 +6,9 @@ import { motion } from "framer-motion";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 const navLinks = [
-  { label: "Services", href: "#services", id: "services" },
-  { label: "Works", href: "#projects", id: "projects" },
+  { label: "Engineering", href: "#services", id: "services" },
+  { label: "Work", href: "#projects", id: "projects" },
+  { label: "Stack", href: "#stack", id: "stack" },
   { label: "About", href: "#about", id: "about" },
   { label: "Journey", href: "#timeline", id: "timeline" },
   { label: "Contact", href: "#contact", id: "contact" },
@@ -74,7 +75,7 @@ export const Navbar = () => {
           </span>
           <span className="tracking-wide">YASH GUPTA</span>
           <span className="hidden sm:inline text-xs font-normal text-[var(--on-surface-variant)]">
-            / SDE &amp; Analyst
+            / Full-Stack &amp; AI Engineer
           </span>
         </Link>
 

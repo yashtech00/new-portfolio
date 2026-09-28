@@ -1,44 +1,68 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Layers, Layout, Cpu } from "lucide-react";
+import { Layers, Server, Cpu, Cloud, GitBranch } from "lucide-react";
 import { staggerContainer, fadeUp, viewportOnce } from "@/lib/motion";
 
-const services = [
+const engineeringDisciplines = [
   {
     id: "01",
     title: "Full-Stack Development",
     icon: Layers,
     description:
-      "From frontend interactions to backend APIs, I build complete web solutions. I work with modern stacks to deliver apps that are scalable, maintainable, and ready for real-world users.",
+      "Architecting and shipping responsive, high-performance web applications with clean component boundaries, resilient state management, and end-to-end type safety.",
     competencies: [
-      { id: "01", name: "React, Node.js, Express.js" },
-      { id: "02", name: "REST APIs, Firebase, Docker" },
-      { id: "03", name: "Git, GitHub, Postman" },
+      { id: "01", name: "React, Next.js, TypeScript, JavaScript" },
+      { id: "02", name: "REST APIs, Authentication, State Management" },
+      { id: "03", name: "Production Web Apps & Clean Architecture" },
     ],
   },
   {
     id: "02",
-    title: "UI/UX & Frontend",
-    icon: Layout,
+    title: "Backend & Systems",
+    icon: Server,
     description:
-      "Good design feels effortless. I design and develop responsive, intuitive interfaces that work smoothly across devices, with a strong focus on clarity, accessibility, and performance.",
+      "Designing scalable server-side architectures, clean RESTful APIs, asynchronous message queues, and high-performance relational and NoSQL database schemas.",
     competencies: [
-      { id: "01", name: "NextJs, TailwindCSS, GSAP" },
-      { id: "02", name: "Figma → Pixel-perfect code" },
-      { id: "03", name: "HTML, CSS, JavaScript" },
+      { id: "01", name: "Node.js, Express, Hono, REST APIs" },
+      { id: "02", name: "PostgreSQL, MongoDB, Prisma, Redis" },
+      { id: "03", name: "API Architecture, Caching & Data Modeling" },
     ],
   },
   {
     id: "03",
-    title: "Optimization",
+    title: "AI Engineering",
     icon: Cpu,
     description:
-      "I focus on building systems that stay reliable as things scale. From handling data efficiently to designing clean architecture, I apply core computer science principles.",
+      "Integrating large language models, retrieval pipelines, and automated multi-step AI workflows into reliable, user-facing product features.",
     competencies: [
-      { id: "01", name: "Data Structures & Algorithms" },
-      { id: "02", name: "DBMS, OOP, OS Fundamentals" },
-      { id: "03", name: "Scalable systems & data pipelines" },
+      { id: "01", name: "LLM APIs, Gemini, LangChain, Embeddings" },
+      { id: "02", name: "Prompt Systems & Evaluation Pipelines" },
+      { id: "03", name: "AI Workflows & Product Automation" },
+    ],
+  },
+  {
+    id: "04",
+    title: "Cloud & Infrastructure",
+    icon: Cloud,
+    description:
+      "Containerizing services, orchestrating automated CI/CD deployment pipelines, and managing object storage and serverless edge functions.",
+    competencies: [
+      { id: "01", name: "Docker, Docker Compose, Microservices" },
+      { id: "02", name: "Cloudflare, Cloudflare R2, Vercel, Render" },
+      { id: "03", name: "CI/CD Pipelines & Production Deployment" },
+    ],
+  },
+  {
+    id: "05",
+    title: "Product Engineering",
+    icon: GitBranch,
+    description:
+      "Turning product requirements into complete, production-grade features across database models, backend logic, frontend interfaces, and deployment.",
+    competencies: [
+      { id: "01", name: "Schema Design to Full Production Release" },
+      { id: "02", name: "Full System Ownership Across Stack Layers" },
+      { id: "03", name: "Telemetry, Error Handling & UX Reliability" },
     ],
   },
 ];
@@ -47,15 +71,15 @@ export const WhatIDo = () => {
   return (
     <div className="flex flex-col gap-6">
 
-      {/* 3-Column Blueprint Cards Grid */}
+      {/* Blueprint Cards Grid */}
       <motion.div
         variants={staggerContainer(0.12, 0.05)}
         initial="hidden"
         whileInView="visible"
         viewport={viewportOnce}
-        className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
       >
-        {services.map((service) => {
+        {engineeringDisciplines.map((service) => {
           const Icon = service.icon;  
           return (
             <motion.div

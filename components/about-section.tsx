@@ -10,11 +10,11 @@ import { useTheme } from "next-themes";
 import { fadeUp, viewportOnce, staggerContainer } from "@/lib/motion";
 
 const aboutTechnicalTags = [
-  "FULL_STACK_ARCHITECTURE",
-  "AI_SYSTEMS",
-  "SYSTEM_DESIGN",
-  "PERFORMANCE_OPTIMIZATION",
-  "MICROSERVICES",
+  "FULL_STACK_SYSTEMS",
+  "AI_ENGINEERING",
+  "API_ARCHITECTURE",
+  "DATABASE_DESIGN",
+  "CLOUD_DEPLOYMENTS",
 ];
 
 export default function AboutSection() {
@@ -62,7 +62,7 @@ export default function AboutSection() {
             transition={{ duration: 0.6 }}
             className="display-font text-2xl sm:text-3xl lg:text-[32px] font-medium leading-snug tracking-tight text-[var(--ink)] mb-6"
           >
-            Engineering scalable software with a deep curiosity for how distributed systems operate at scale.
+            I engineer full-stack systems, design robust APIs, and integrate AI into production software.
           </motion.h3>
 
           {/* Short Personal Narrative */}
@@ -74,15 +74,16 @@ export default function AboutSection() {
             className="text-[var(--on-surface-variant)] text-base sm:text-lg leading-relaxed mb-6 space-y-4"
           >
             <p>
-              I hold a B.Tech in Information Technology and work as an SDE Analyst at{" "}
-              <span className="text-[var(--ink)] font-semibold">KPMG India</span>. My journey spans
-              building full-stack production platforms, architecting containerized systems with Docker,
-              and developing AI-integrated tools that eliminate operational bottlenecks.
+              I&apos;m a full-stack engineer focused on building production software across the frontend,
+              backend, AI, and cloud infrastructure. Currently working as an SDE Analyst at{" "}
+              <span className="text-[var(--ink)] font-semibold">KPMG India</span> with a B.Tech in
+              Information Technology.
             </p>
             <p>
-              I believe great engineering is not about complexity for its own sake — it&apos;s about
-              translating ambiguous business requirements into resilient, testable, and maintainable
-              systems that perform reliably under real-world loads.
+              I enjoy working on systems where product requirements turn into real engineering problems —
+              API design, database architecture, authentication, asynchronous workflows, AI integrations,
+              performance, and deployment. I prefer building the complete system rather than only working
+              on one layer.
             </p>
           </motion.div>
 
@@ -107,22 +108,22 @@ export default function AboutSection() {
               <li className="flex items-center gap-2.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-[var(--teal)] shrink-0" />
                 <span className="text-[var(--ink)] font-medium">Full-Stack Architecture:</span>
-                <span>TypeScript, Next.js, Node.js, Express, React</span>
+                <span>TypeScript, Next.js, React, Node.js, Express</span>
               </li>
               <li className="flex items-center gap-2.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-[var(--teal)] shrink-0" />
-                <span className="text-[var(--ink)] font-medium">System Design &amp; Scalability:</span>
-                <span>REST APIs, Docker, microservices, caching</span>
+                <span className="text-[var(--ink)] font-medium">Backend &amp; APIs:</span>
+                <span>REST APIs, Docker, microservices, auth &amp; caching</span>
               </li>
               <li className="flex items-center gap-2.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-[var(--teal)] shrink-0" />
-                <span className="text-[var(--ink)] font-medium">AI &amp; Automation:</span>
-                <span>LLM workflows, retrieval-augmented systems, automated pipelines</span>
+                <span className="text-[var(--ink)] font-medium">AI &amp; Workflows:</span>
+                <span>LLM integrations, LangChain, embeddings, prompt pipelines</span>
               </li>
               <li className="flex items-center gap-2.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-[var(--teal)] shrink-0" />
                 <span className="text-[var(--ink)] font-medium">Databases &amp; Storage:</span>
-                <span>PostgreSQL, MongoDB, Redis, Cloudflare R2 / AWS S3</span>
+                <span>PostgreSQL, MongoDB, Prisma, Redis, Cloudflare R2</span>
               </li>
             </ul>
           </motion.div>

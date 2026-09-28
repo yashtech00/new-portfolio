@@ -10,6 +10,7 @@ import { ConnectWithMe } from "@/components/connect-with-me";
 import ScrollTimeline from "@/components/timeline-feature";
 import AboutSection from "@/components/about-section";
 import { WhatIDo } from "@/components/what-i-do";
+import { TechStack } from "@/components/tech-stack";
 import { StackSection } from "@/components/stack-section";
 import { HalftoneFlow } from "@/components/ui/halftone-flow";
 
@@ -44,7 +45,7 @@ export default function Home() {
               YASH GUPTA · PORTFOLIO
             </span>
             <GooeyText
-              texts={["Engineering", "Architecture", "Performance", "Full-Stack developer"]}
+              texts={["Engineering", "Systems", "AI Workflows", "Full-Stack Builder"]}
               morphTime={0.9}
               cooldownTime={0.25}
               className="font-semibold text-5xl md:text-7xl text-[var(--ink)]"
@@ -75,9 +76,9 @@ export default function Home() {
               <StackSection
                 id="services"
                 zIndex={20}
-                title="WHAT I DO /"
-                label="CAPABILITIES & SERVICES"
-                description="Scalable systems · clean architecture · modern web applications engineered for production."
+                title="WHAT I BUILD /"
+                label="ENGINEERING DISCIPLINES"
+                description="Full-stack web applications, scalable backend systems, AI workflows, and cloud deployments engineered for production."
               >
                 <WhatIDo />
               </StackSection>
@@ -85,19 +86,29 @@ export default function Home() {
               <StackSection
                 id="projects"
                 zIndex={30}
-                title="SELECTED WORKS /"
-                label="FEATURED PROJECTS"
-                description="Production platforms and experimental tools shipped with clean architecture, thoughtful UX, and reliable code."
+                title="SELECTED BUILDS /"
+                label="SYSTEMS & APPLICATIONS"
+                description="Production applications, experiments, and systems I've built across full-stack development and AI."
               >
                 <Projects />
+              </StackSection>
+
+              <StackSection
+                id="stack"
+                zIndex={35}
+                title="CORE STACK /"
+                label="ENGINEERING ARSENAL"
+                description="Explicit technologies and tools I engineer with across frontend, backend, databases, AI systems, and cloud infrastructure."
+              >
+                <TechStack />
               </StackSection>
 
               <StackSection
                 id="about"
                 zIndex={40}
                 title="ABOUT ME /"
-                label="BACKGROUND & METRICS"
-                description="Full-Stack Developer & Analyst focused on building scalable, high-performance, and AI-driven solutions."
+                label="ENGINEER IDENTITY"
+                description="Full-stack engineer focused on building production software across the frontend, backend, AI and cloud infrastructure."
               >
                 <AboutSection />
               </StackSection>
@@ -106,8 +117,8 @@ export default function Home() {
                 id="timeline"
                 zIndex={50}
                 title="MY JOURNEY /"
-                label="EXPERIENCE & EDUCATION"
-                description="From computer science fundamentals to enterprise digital transformation — a timeline of continuous engineering."
+                label="ENGINEERING PROGRESSION"
+                description="From computer science fundamentals to production software systems — a timeline of continuous building."
               >
                 <ScrollTimeline />
               </StackSection>
@@ -115,9 +126,9 @@ export default function Home() {
               <StackSection
                 id="contact"
                 zIndex={60}
-                title="LET'S CONNECT /"
+                title="LET'S BUILD /"
                 label="GET IN TOUCH"
-                description="Open for architectural consulting, engineering collaborations, and impactful digital products."
+                description="Have an interesting engineering problem, product idea, or collaboration in mind?"
               >
                 <ConnectWithMe />
               </StackSection>

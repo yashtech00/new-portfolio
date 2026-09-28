@@ -11,10 +11,10 @@ const socialLinks = [
 ];
 
 const technicalTags = [
-  "FULL_STACK_ENGINEERING",
-  "AI_SYSTEMS",
-  "SCALABLE_WEB",
-  "DISTRIBUTED_ARCHITECTURE",
+  "FULL_STACK_SYSTEMS",
+  "AI_WORKFLOWS",
+  "DISTRIBUTED_APIS",
+  "CLOUD_INFRASTRUCTURE",
 ];
 
 export const HeroSection = () => {
@@ -47,11 +47,11 @@ export const HeroSection = () => {
           >
             <span className="flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-[var(--teal)]">
               <span className="w-1.5 h-1.5 rounded-full bg-[var(--teal)] animate-pulse" />
-              Software Developer Engineer &amp; Analyst
+              Full-Stack &amp; AI Engineer
             </span>
             <span className="h-px w-6 bg-[var(--outline-variant)]" />
             <span className="text-[11px] text-[var(--on-surface-variant)] font-mono tracking-wider">
-              KPMG INDIA
+              SYSTEMS &amp; ARCHITECTURE
             </span>
           </motion.div>
 
@@ -62,9 +62,9 @@ export const HeroSection = () => {
             transition={{ duration: 0.65, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
             className="display-font text-5xl sm:text-6xl md:text-7xl xl:text-[80px] font-medium leading-[1.03] tracking-tight text-[var(--ink)]"
           >
-            Building thoughtful{" "}
-            <span className="italic font-normal text-[var(--teal)]">digital experiences</span>{" "}
-            &amp; scalable systems.
+            Building{" "}
+            <span className="italic font-normal text-[var(--teal)]">production software</span>{" "}
+            &amp; AI-powered products.
           </motion.h1>
 
           {/* 3. Supporting Statement (0.18s) */}
@@ -74,10 +74,8 @@ export const HeroSection = () => {
             transition={{ duration: 0.55, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
             className="text-[var(--on-surface-variant)] text-base sm:text-lg md:text-xl leading-relaxed max-w-xl"
           >
-            I architect and engineer high-performance web applications using modern full-stack
-            technologies currently an SDE Analyst at{" "}
-            <span className="text-[var(--ink)] font-semibold">KPMG India</span>, available for
-            select engineering collaborations and architectural consulting.
+            I build full-stack applications and AI-powered systems across frontend,
+            backend, databases, APIs, and cloud infrastructure — from architecture to production.
           </motion.p>
 
           {/* 4. CTAs & Social Links (0.28s) */}
@@ -100,10 +98,10 @@ export const HeroSection = () => {
               </Link>
 
               <Link
-                href="#contact"
+                href="#stack"
                 className="inline-flex items-center justify-center gap-2 border border-[var(--outline-variant)] text-[var(--ink)] text-sm font-semibold tracking-wide px-7 py-3.5 rounded-full hover:border-[var(--teal)] hover:text-[var(--teal)] transition-all duration-200 bg-[var(--surface-container-lowest)]/50"
               >
-                Contact Me
+                Explore Stack
               </Link>
             </div>
 
@@ -190,7 +188,7 @@ export const HeroSection = () => {
                 </span>
                 <p className="text-xs text-[var(--on-surface-variant)] font-mono">
                   Currently building{" "}
-                  <span className="text-[var(--ink)] font-semibold">Scalable Digital Products</span>
+                  <span className="text-[var(--ink)] font-semibold">Production Systems &amp; AI Apps</span>
                 </p>
               </div>
             </div>

@@ -21,9 +21,23 @@ const newsreader = Newsreader({
 });
 
 export const metadata: Metadata = {
-  title: "Yash Gupta Full-Stack Developer & Analyst",
+  title: "Yash Gupta — Full-Stack Engineer & AI Developer",
   description:
-    "Portfolio of Yash Gupta, Full-Stack Developer & Analyst specializing in scalable systems, AI-driven applications, and modern web engineering.",
+    "Portfolio of Yash Gupta, a full-stack engineer building web applications, backend systems, AI-powered products, and production software.",
+  openGraph: {
+    title: "Yash Gupta — Full-Stack Engineer & AI Developer",
+    description:
+      "Full-stack engineer building web applications, backend systems, AI workflows, and scalable production software.",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Yash Gupta — Full-Stack Engineer & AI Developer",
+    description:
+      "Full-stack engineer building web applications, backend systems, AI workflows, and scalable production software.",
+    creator: "@yashgtech00",
+  },
 };
 
 export default function RootLayout({

@@ -63,7 +63,7 @@ export default function AllProjectsPage() {
             All Projects
           </h1>
           <p className="text-[var(--on-surface-variant)] mt-3 text-lg md:text-xl max-w-2xl leading-relaxed">
-            Everything I&apos;ve built client engagements, production web apps, tools &amp; experiments.
+            Production applications, experiments, and systems I&apos;ve built across full-stack development and AI.
           </p>
         </div>
 

@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 const testimonials = [
   {
     tempId: 1,
-    testimonial: "I'm confident my data is safe with COMPANY.",
+    testimonial: "Code. Build. Scale.",
     by: "Code. Build. Scale.",
     imgSrc: "/about-2.jpeg",
   },

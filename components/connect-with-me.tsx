@@ -60,17 +60,17 @@ export const ConnectWithMe = () => {
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-[var(--teal)] animate-pulse" />
             <span className="text-xs font-mono font-bold tracking-widest uppercase text-[var(--teal)]">
-              AVAILABLE FOR COLLABORATION
+              ENGINEERING COLLABORATION
             </span>
           </div>
 
           <h3 className="display-font text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-[#fcf9f3] dark:text-[var(--ink)] leading-[1.08]">
-            Let&apos;s build something <span className="italic font-normal text-[var(--teal)]">useful</span>.
+            Let&apos;s build something <span className="italic font-normal text-[var(--teal)]">meaningful</span>.
           </h3>
 
           <p className="text-[#a5b2bb] dark:text-[var(--on-surface-variant)] text-base sm:text-lg leading-relaxed max-w-xl">
-            Whether you&apos;re building a new digital product, scaling existing infrastructure, or
-            need architectural consulting — I&apos;m always open to exploring high-impact projects.
+            Have an interesting engineering problem, system architecture challenge, or product
+            idea in mind? I&apos;m always open to discussing new builds and technical collaborations.
           </p>
 
           <div className="pt-2">
@@ -93,7 +93,7 @@ export const ConnectWithMe = () => {
             className="group inline-flex items-center gap-3 bg-[var(--teal)] hover:bg-[var(--teal-strong)] text-white text-base font-semibold px-8 py-4 rounded-full transition-all shadow-md"
           >
             <Mail size={18} />
-            <span>Initiate Conversation</span>
+            <span>Get in Touch</span>
             <ArrowUpRight
               size={18}
               className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"

@@ -10,8 +10,9 @@ export default function Footer() {
   };
 
   const navLinks = [
-    { label: "Services", href: "#services" },
-    { label: "Projects", href: "#projects" },
+    { label: "Engineering", href: "#services" },
+    { label: "Work", href: "#projects" },
+    { label: "Stack", href: "#stack" },
     { label: "About", href: "#about" },
     { label: "Journey", href: "#timeline" },
     { label: "Contact", href: "#contact" },
@@ -38,7 +39,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-xs text-[var(--on-surface-variant)] font-mono">
-              Full-Stack Developer &amp; Analyst · Gurgaon, India
+              Full-Stack &amp; AI Engineer · Gurgaon, India
             </p>
           </div>
 
@@ -76,7 +77,7 @@ export default function Footer() {
           <div className="flex items-center gap-4 text-xs font-mono text-[var(--on-surface-variant)]">
             <span>© {new Date().getFullYear()} Yash Gupta</span>
             <span className="text-[var(--teal)]">·</span>
-            <span>Built with precision</span>
+            <span>Engineered with precision</span>
             <button
               onClick={scrollToTop}
               aria-label="Back to top"
